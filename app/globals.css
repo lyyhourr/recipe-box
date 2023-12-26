@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bg-pink {
+    @apply bg-[#FF7F89];
+  }
+  .bg-gradient-pink {
+    @apply bg-gradient-to-tr  from-red-400  via-[#FE757F] to-[#FE8A95];
+  }
+  .bg-gradient-blue {
+    @apply bg-gradient-to-br  from-[#B8EAF3]  via-[#ADDDE7]  to-[#8CC0CE];
+  }
+}
