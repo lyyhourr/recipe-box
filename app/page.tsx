@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { FaArrowRight } from "react-icons/fa6";
 export default function Home() {
   return (
     <main className="flex p-1 sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
@@ -13,15 +13,18 @@ export default function Home() {
             className="w-[60px] sm:w-[90px] sm:h-[70px] p-2"
             alt="main logo"
           />
-          <p className="text-xs">logo title</p>
+          <p className="text-xs sm:text-lg lg:text-xl">logo title</p>
         </Link>
         <div className=" w-full ">right-nav</div>
       </nav>
       <section className="flex flex-col sm:flex-row gap-1">
         <div className=" bg-white w-full rounded-md flex justify-evenly  flex-col">
-          <p className=" sm:w-4/5 ml-2 md:ml-5 text-lg sm:text-xl md:text-4xl lg:text-5xl ">Animation Text</p>
+          <p className="  ml-2 md:ml-5 text-2xl  sm:text-5xl md:text-4xl lg:text-7xl xl:text-9xl text-center sm:text-start">Animation Text</p>
           <div className="flex justify-center sm:justify-start  ml-2 md:ml-5 my-2 sm:my-0">
-            <button className="bg-gradient-pink uppercase rounded-full text-sm sm:text-lg  py-1 px-2 sm:py-2 sm:px-5 ">button</button>
+            <button className=" cursor-pointer bg-gradient-pink uppercase rounded-full text-sm sm:text-xl lg:text-4xl   py-1 px-2 sm:py-2 sm:px-5 lg:px-12 lg:py-7 flex items-center justify-center gap-1 sm:gap-2 md:gap-4">
+              <span>Button</span>
+              <FaArrowRight />
+            </button>
           </div>
         </div>
         <div className="bg-gradient-blue rounded-md py-2 px-3 ">
@@ -30,7 +33,7 @@ export default function Home() {
               src={"/images/cat-chef.png"}
               width={500}
               height={500}
-              className="w-[200px] sm:w-[550px]"
+              className="w-[350px] sm:w-[500px] md:w-[850px] "
               alt="hero image"
             />
           </div>
