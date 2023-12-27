@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import PopularRecipe from "@/components/PopularRecipe";
+import { Test } from "@/components/Test";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
       <section className="flex flex-col sm:flex-row gap-1 ">
         <div className=" bg-gray-200 w-full rounded-md flex justify-between flex-col">
           <div className="w-full  h-full flex items-center  sm:justify-start ">
-            <p className="ml-2 md:ml-5 text-4xl h-[100px] sm:h-auto  sm:text-5xl   xl:text-8xl  sm:text-start">
+            <p className="ml-2 md:ml-5 text-4xl h-[100px] sm:text-5xl   xl:text-8xl  sm:text-start">
               Are you {" "}
               <span className="leading-tight">
                 <AnimationText
@@ -50,10 +51,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-full rounded-md bg-gradient-pink">
-          <p className="text-gray-700 p-2 text-4xl">Popular Recipes</p>
-          <div className="w-full py-10 flex items-center justify-center">
-            <PopularRecipe/>
+        <div className="w-full rounded-md bg-gradient-pink flex items-center  justify-center">
+          <div className="">
+            <PopularRecipe />
           </div>
         </div>
       </section>
