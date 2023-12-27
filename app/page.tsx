@@ -6,7 +6,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 export default function Home() {
   return (
-    <main className="flex p-1 h-screen sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
+    <main className="flex p-1 h-full sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
       <Navbar />
       <section className="flex flex-col sm:flex-row gap-1">
         <div className=" bg-gray-100 w-full rounded-md flex justify-between flex-col">

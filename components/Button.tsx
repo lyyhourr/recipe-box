@@ -1,5 +1,4 @@
-import { cn } from "@/utils/CN";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
