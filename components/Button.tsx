@@ -1,48 +1,53 @@
 import { cn } from "@/utils/CN";
+import clsx from "clsx";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
 type ButtonPropsTypes = {
   children: React.ReactNode;
-  size: "sm" | "md" | "lg" | "xl";
-  bgColor: "gradient-pink" | "gradient-blue";
-  radius: "sm" | "md" | "lg" | "full";
+  size?: "sm" | "md" | "lg" | "xl";
+  bgColor?: "gradient-blue";
+  radius?: "sm" | "md" | "lg" | "xl" | "full";
   showArrow?: boolean;
-  textColor?: "white";
-  arrowColor?: "white";
+  textColor?: "black";
   hover?: boolean
+  uppercase?: boolean
 };
 
 export default function Button(props: ButtonPropsTypes) {
   return (
     <button
-      className={cn(` cursor-pointer uppercase group
-      bg-${props.bgColor} rounded-full
-      ${props.showArrow && "flex items-center justify-center"}
-      ${props.size === "sm" &&
-        "p-1 sm:p-2 lg:px-3 lg:py-2 text-base sm:text-lg lg:text-xl gap-1"
-        }
-      ${props.size === "md" &&
-        "px-2 py-1 sm:px-4 sm:py-2 lg:px-4 lg:py-3 text-xl lg:text-2xl gap-1 lg:gap-2"
-        }
-      ${props.size === "lg" &&
-        "p-2 sm:px-4 sm:py-3 lg:px-6 lg:py-4 text-xl sm:text-2xl lg:text-3xl gap-1 sm:gap-3"
-        }
-      ${props.size === "xl" &&
-        "px-3 py-2 sm:px-4 sm:py-3 lg:px-7 lg:py-7 text-xl sm:text-3xl lg:text-5xl gap-2 md:gap-4"
-        }
-      `,{'rounded-md':props.radius === 'md',
-      'rounded-full':props.radius === 'full',})}
+      className={cn(` cursor-pointer  group rounded-lg text-white px-3 py-2 bg-gradient-pink`,
+        {
+          "uppercase": props.uppercase,
+          'rounded-sm': props.radius === 'sm',
+          'rounded-md': props.radius === 'md',
+          'rounded-lg': props.radius === 'lg',
+          'rounded-xl': props.radius === 'xl',
+          'rounded-full': props.radius === 'full',
+          'p-1 sm:p-2 lg:px-3 lg:py-2 text-base sm:text-lg lg:text-xl gap-1': props.size === "sm",
+          'px-2 py-1 sm:px-4 sm:py-2 lg:px-4 lg:py-3 text-xl lg:text-2xl gap-1 lg:gap-2': props.size === "md",
+          'p-2 sm:px-4 sm:py-3 lg:px-6 lg:py-4 text-xl sm:text-2xl lg:text-3xl gap-1 sm:gap-3': props.size === "lg",
+          'px-3 py-2 sm:px-4 sm:py-3 lg:px-7 lg:py-7 text-xl sm:text-3xl lg:text-5xl gap-2 md:gap-4': props.size === "xl",
+          'flex items-center justify-center': props.showArrow,
+          "bg-gradient-blue": props.bgColor === "gradient-blue",
+          "text-black": props.textColor === "black",
+        })}
     >
-      <span className={`text-${props.textColor} duration-500 
-      ${props.hover && props.textColor === "white" ? "group-hover:text-black" : "group-hover:text-white"}
-      `}>
+      <span className={cn(`text-${props.textColor} duration-500 
+      `, {
+        "group-hover:text-white": props.textColor === "black" && props.hover,
+        "group-hover:text-black": !props.textColor && props.hover,
+
+      })}>
         {props.children}
       </span>
       {props.showArrow && (
-        <FaArrowRight className={`text-${props.arrowColor} duration-500 group-hover:translate-x-1
-        ${props.hover && props.arrowColor === "white" ? "group-hover:text-black " : "group-hover:text-white"}
-        `} />
+        <FaArrowRight className={cn(` duration-500 group-hover:translate-x-1`,
+          {
+            "group-hover:text-white ": props.hover && props.textColor === "black",
+            "group-hover:text-black ": props.hover && !props.textColor,
+          })} />
       )}
     </button>
   );

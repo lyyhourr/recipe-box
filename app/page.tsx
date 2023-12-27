@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center  items-center sm:justify-start  ml-2 md:ml-5 my-3">
             <Link href={"/"}>
-              <Button showArrow size="lg" bgColor="gradient-pink" radius="full" hover>
+              <Button hover showArrow uppercase size="lg" textColor="black" radius="full">
                 Cook Now
               </Button>
             </Link>
