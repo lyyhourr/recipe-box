@@ -14,23 +14,29 @@ export default function Home() {
         <div className="bg-gray-200 py-5 w-full justify-between rounded-md flex flex-col">
           <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start ">
             <p className="ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start">
-              We Help You Find {" "}
+              We Help You Find{" "}
               <span className="leading-tight">
                 <AnimationText
-                  texts={["New Food", "What To Cook", 'Maybe Your New Favorite Food?']}
+                  texts={[
+                    "New Food",
+                    "What To Cook",
+                    "Maybe Your New Favorite Food?",
+                  ]}
                   duration={1000}
                 />
               </span>
             </p>
           </div>
-<<<<<<< Updated upstream
           <div className="flex md:pb-10 sm:justify-start ml-2 md:ml-5 my-3">
-            <Link href={"/"}>
-=======
-          <div className="flex justify-center  items-center sm:justify-start  ml-2 md:ml-5 my-3">
             <Link href={"/cook"}>
->>>>>>> Stashed changes
-              <Button hover showArrow uppercase size="lg" textColor="black" radius="full">
+              <Button
+                hover
+                showArrow
+                uppercase
+                size="lg"
+                textColor="black"
+                radius="full"
+              >
                 Cook Now
               </Button>
             </Link>
@@ -49,24 +55,26 @@ export default function Home() {
       <section className="flex lg:flex-row flex-col gap-1">
         <div className="rounded-md w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
           <div className="mx-auto text-sm flex flex-col justify-center gap-5">
-            <p className="text-xl md:text-5xl"><span className="text-gray-700 whitespace-nowrap">Discover </span><span className="font-bold">100K+</span> Recipes</p>
+            <p className="text-xl md:text-5xl">
+              <span className="text-gray-700 whitespace-nowrap">Discover </span>
+              <span className="font-bold">100K+</span> Recipes
+            </p>
             <div className="">
               <p className="lg:text-2xl text-lg tracking-wide">
-                Discover a world of culinary delights at <br /><span className="font-bold underline underline-offset-4 decoration-2">RECIPE-BOX</span>. Select your favorite ingredients. Elevate your cooking experience with ease and flavor.
+                Discover a world of culinary delights at <br />
+                <span className="font-bold underline underline-offset-4 decoration-2">
+                  RECIPE-BOX
+                </span>
+                . Select your favorite ingredients. Elevate your cooking
+                experience with ease and flavor.
               </p>
             </div>
           </div>
         </div>
-<<<<<<< Updated upstream
         <div className="w-full p-5 rounded-md bg-gradient-pink">
           <h1 className="text-5xl">Popular Recipe</h1>
           <div className="flex justify-center">
             <PopularRecipe />
-=======
-        <div className="w-full rounded-md bg-gradient-pink flex items-center  justify-center">
-          <div className="">
-            {/* <PopularRecipe /> */}
->>>>>>> Stashed changes
           </div>
         </div>
       </section>
