@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/drawer"
 import { MenuIcon } from "lucide-react";
 import { SlClose } from "react-icons/sl";
+import Menu from "./Menu";
 // const social = [
 //   {
 //     href: "/",
@@ -39,14 +40,14 @@ export default function Navbar() {
         <p className="sm:text-lg uppercase whitespace-nowrap lg:text-xl">recipe-box</p>
       </Link>
       <div className=" w-full flex justify-end items-center mr-3 sm:mr-10">
-        <Drawer>
-          <DrawerTrigger className="border-[3px] border-black rounded-xl p-1 ">
+        {/* <Drawer>
+          <DrawerTrigger className="border-2 border-black border-r-4 border-b-4 active:border-2 rounded-xl p-1 ">
             <MenuIcon className="w-8 h-8 " />
           </DrawerTrigger>
           <DrawerContent>
             <div className="w-screen h-screen rounded-3xl">
               <div className="justify-end flex m-5">
-                <DrawerClose className="rounded-lg text-white px-3 py-2 bg-gradient-pink duration-500 hover:text-black">
+                <DrawerClose className="rounded-lg text-white px-3 py-2 bg-gradient-pink duration-500 hover:text-black border-2 border-black border-r-4 border-b-4 active:border-2 ">
                   Close
                 </DrawerClose>
               </div>
@@ -55,7 +56,8 @@ export default function Navbar() {
               </p>
             </div>
           </DrawerContent>
-        </Drawer>
+        </Drawer> */}
+        <Menu />
       </div>
     </nav>
   );

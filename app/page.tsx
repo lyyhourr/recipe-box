@@ -23,8 +23,13 @@ export default function Home() {
               </span>
             </p>
           </div>
+<<<<<<< Updated upstream
           <div className="flex md:pb-10 sm:justify-start ml-2 md:ml-5 my-3">
             <Link href={"/"}>
+=======
+          <div className="flex justify-center  items-center sm:justify-start  ml-2 md:ml-5 my-3">
+            <Link href={"/cook"}>
+>>>>>>> Stashed changes
               <Button hover showArrow uppercase size="lg" textColor="black" radius="full">
                 Cook Now
               </Button>
@@ -52,10 +57,16 @@ export default function Home() {
             </div>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div className="w-full p-5 rounded-md bg-gradient-pink">
           <h1 className="text-5xl">Popular Recipe</h1>
           <div className="flex justify-center">
             <PopularRecipe />
+=======
+        <div className="w-full rounded-md bg-gradient-pink flex items-center  justify-center">
+          <div className="">
+            {/* <PopularRecipe /> */}
+>>>>>>> Stashed changes
           </div>
         </div>
       </section>
