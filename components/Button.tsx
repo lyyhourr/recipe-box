@@ -1,3 +1,4 @@
+import { cn } from "@/utils/CN";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
@@ -15,8 +16,8 @@ type ButtonPropsTypes = {
 export default function Button(props: ButtonPropsTypes) {
   return (
     <button
-      className={` cursor-pointer uppercase group
-      bg-${props.bgColor} rounded-${props.radius}
+      className={cn(` cursor-pointer uppercase group
+      bg-${props.bgColor} rounded-full
       ${props.showArrow && "flex items-center justify-center"}
       ${props.size === "sm" &&
         "p-1 sm:p-2 lg:px-3 lg:py-2 text-base sm:text-lg lg:text-xl gap-1"
@@ -30,7 +31,8 @@ export default function Button(props: ButtonPropsTypes) {
       ${props.size === "xl" &&
         "px-3 py-2 sm:px-4 sm:py-3 lg:px-7 lg:py-7 text-xl sm:text-3xl lg:text-5xl gap-2 md:gap-4"
         }
-      `}
+      `,{'rounded-md':props.radius === 'md',
+      'rounded-full':props.radius === 'full',})}
     >
       <span className={`text-${props.textColor} duration-500 
       ${props.hover && props.textColor === "white" ? "group-hover:text-black" : "group-hover:text-white"}
