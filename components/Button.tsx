@@ -16,7 +16,7 @@ type ButtonPropsTypes = {
 export default function Button(props: ButtonPropsTypes) {
   return (
     <button
-      className={cn(` cursor-pointer  group rounded-lg text-white px-3 py-2 bg-gradient-pink`,
+      className={cn(` cursor-pointer  group rounded-lg text-white px-3 py-2 transition-all duration-150 ease-in-out bg-gradient-pink border active:border border-black border-r-4 border-b-4`,
         {
           "uppercase": props.uppercase,
           'rounded-sm': props.radius === 'sm',

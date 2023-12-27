@@ -4,6 +4,8 @@ import AnimationText from "@/components/AnimationText";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import PopularRecipe from "@/components/PopularRecipe";
+
 export default function Home() {
   return (
     <main className="flex p-1 h-full sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
@@ -48,8 +50,11 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-full rounded-md  bg-gradient-pink">
-          <p className="py-10">Popular Recipes</p>
+        <div className="w-full rounded-md bg-gradient-pink">
+          <p className="text-gray-700 p-2 text-4xl">Popular Recipes</p>
+          <div className="w-full py-10 flex items-center justify-center">
+            <PopularRecipe/>
+          </div>
         </div>
       </section>
       <Footer />
