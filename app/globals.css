@@ -13,3 +13,16 @@
     @apply bg-gradient-to-br  from-[#B8EAF3]  via-[#ADDDE7]  to-[#8CC0CE];
   }
 }
+
+.heroImg {
+  object-fit: cover;
+  animation: move 2s infinite ease-in-out alternate;
+}
+@keyframes move {
+  from {
+    transform: translateY(-15px);
+  }
+  to {
+    transform: translateY(0px) scale(1.01);
+  }
+}

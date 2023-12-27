@@ -38,8 +38,8 @@ export default function Button(props: ButtonPropsTypes) {
         {props.children}
       </span>
       {props.showArrow && (
-        <FaArrowRight className={`text-${props.arrowColor} duration-500 
-        ${props.hover && props.arrowColor === "white" ? "group-hover:text-black" : "group-hover:text-white"}
+        <FaArrowRight className={`text-${props.arrowColor} duration-500 group-hover:translate-x-1
+        ${props.hover && props.arrowColor === "white" ? "group-hover:text-black " : "group-hover:text-white"}
         `} />
       )}
     </button>
