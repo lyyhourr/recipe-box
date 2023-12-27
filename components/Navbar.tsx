@@ -4,11 +4,10 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <Link
-      href={"/"}
+    <nav
       className=" flex items-center gap-2 bg-white rounded-md text-center py-2 sm:py-3"
     >
-      <div className=" w-2/3 sm:w-1/3 lg:w-1/5 flex items-center ">
+      <Link href={"/"} className=" w-2/3 sm:w-1/3 lg:w-1/5 flex items-center ">
         <Image
           src={"/logos/main-logo.png"}
           width={10000}
@@ -17,8 +16,8 @@ export default function Navbar() {
           alt="main logo"
         />
         <p className="text-xs sm:text-lg lg:text-xl">logo title</p>
-      </div>
+      </Link>
       <div className=" w-full ">right-nav-content</div>
-    </Link>
+    </nav>
   );
 }

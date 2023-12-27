@@ -21,7 +21,7 @@ export default function Home() {
             </p>
           </div>
           <div className="flex justify-center  items-center sm:justify-start  ml-2 md:ml-5 my-3">
-            <Button showArrow size="xl" bgColor="gradient-pink" radius="full">
+            <Button showArrow size="xl" bgColor="gradient-pink" radius="full" hover>
               Button
             </Button>
           </div>
