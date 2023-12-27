@@ -5,26 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import PopularRecipe from "@/components/PopularRecipe";
-import { Test } from "@/components/Test";
 
 export default function Home() {
   return (
-    <main className="flex p-1 h-full sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
+    <main className="flex p-1 h-full sm:p-2  lg:p-3 bg-[#000] flex-col gap-1">
       <Navbar />
-      <section className="flex flex-col sm:flex-row gap-1 ">
-        <div className=" bg-gray-200 w-full rounded-md flex justify-between flex-col">
-          <div className="w-full  h-full flex items-center  sm:justify-start ">
-            <p className="ml-2 md:ml-5 text-4xl h-[100px] sm:text-5xl   xl:text-8xl  sm:text-start">
-              Are you {" "}
+      <section className="flex flex-col h-full sm:flex-row gap-1">
+        <div className="bg-gray-200 py-5 w-full justify-between rounded-md flex flex-col">
+          <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start ">
+            <p className="ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start">
+              We Help You Find {" "}
               <span className="leading-tight">
                 <AnimationText
-                  texts={["looking for new food ?", "dont know what to cook ?"]}
+                  texts={["New Food", "What To Cook", 'Maybe Your New Favorite Food?']}
                   duration={1000}
                 />
               </span>
             </p>
           </div>
-          <div className="flex justify-center  items-center sm:justify-start  ml-2 md:ml-5 my-3">
+          <div className="flex md:pb-10 sm:justify-start ml-2 md:ml-5 my-3">
             <Link href={"/"}>
               <Button hover showArrow uppercase size="lg" textColor="black" radius="full">
                 Cook Now
@@ -43,16 +42,19 @@ export default function Home() {
         </div>
       </section>
       <section className="flex lg:flex-row flex-col gap-1">
-        <div className=" rounded-md w-full lg:w-[1000px] bg-gradient-blue flex items-center justify-center ">
-          <div className="mx-auto text-sm lg:w-4/5 p-2 flex-col gap-5">
-            <p className="sm:text-xl md:text-3xl  lg:text-4xl "><span className="text-gray-700 whitespace-nowrap">Discover </span><span className="font-bold">100K+</span> Recipes</p>
-            <p className="">
-              Discover a world of culinary delights at [Your Website Name]. Select your favorite ingredients. Elevate your cooking experience with ease and flavor.
-            </p>
+        <div className="rounded-md w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
+          <div className="mx-auto text-sm flex flex-col justify-center gap-5">
+            <p className="text-xl md:text-5xl"><span className="text-gray-700 whitespace-nowrap">Discover </span><span className="font-bold">100K+</span> Recipes</p>
+            <div className="">
+              <p className="lg:text-2xl text-lg tracking-wide">
+                Discover a world of culinary delights at <br /><span className="font-bold underline underline-offset-4 decoration-2">RECIPE-BOX</span>. Select your favorite ingredients. Elevate your cooking experience with ease and flavor.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="w-full rounded-md bg-gradient-pink flex items-center  justify-center">
-          <div className="">
+        <div className="w-full p-5 rounded-md bg-gradient-pink">
+          <h1 className="text-5xl">Popular Recipe</h1>
+          <div className="flex justify-center">
             <PopularRecipe />
           </div>
         </div>
