@@ -3,12 +3,13 @@ import Navbar from "@/components/Navbar";
 import AnimationText from "@/components/AnimationText";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
-    <main className="flex p-1 sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
+    <main className="flex p-1 h-screen sm:p-2 lg:p-3 bg-[#000]  flex-col gap-1">
       <Navbar />
       <section className="flex flex-col sm:flex-row gap-1">
-        <div className=" bg-white w-full rounded-md flex justify-between flex-col">
+        <div className=" bg-gray-100 w-full rounded-md flex justify-between flex-col">
           <div className="w-full  h-full flex items-center  sm:justify-start ">
             <p className="ml-2 md:ml-5 text-4xl h-[100px] sm:h-auto  sm:text-5xl   xl:text-8xl  sm:text-start">
               Are you {" "}
@@ -38,14 +39,20 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="grid grid-cols-3 gap-1">
-        <div className=" rounded-md bg-gradient-blue w-full flex items-center justify-center ">
-          <p className="text-center   sm:text-xl md:text-3xl  lg:text-4xl "><span className="text-gray-700">Discover </span><span className="font-bold">100K+</span> Recipes</p>
+      <section className="flex lg:flex-row flex-col gap-1">
+        <div className=" rounded-md w-full lg:w-[1000px] bg-gradient-blue flex items-center justify-center ">
+          <div className="mx-auto text-sm lg:w-4/5 p-2 flex-col gap-5">
+            <p className="sm:text-xl md:text-3xl  lg:text-4xl "><span className="text-gray-700 whitespace-nowrap">Discover </span><span className="font-bold">100K+</span> Recipes</p>
+            <p className="">
+            Discover a world of culinary delights at [Your Website Name]. Select your favorite ingredients. Elevate your cooking experience with ease and flavor.
+            </p>
+          </div>
         </div>
-        <div className="w-full rounded-md bg-gradient-pink col-span-2">
+        <div className="w-full rounded-md  bg-gradient-pink">
           <p className="py-10">Popular Recipes</p>
         </div>
       </section>
+      <Footer/>
     </main>
   );
 }
