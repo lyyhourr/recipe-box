@@ -1,138 +1,14 @@
 "use client";
 import Button from "@/components/Button";
 import Menu from "@/components/Menu";
+import { ingredients } from "@/constant/const";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoArrowBack, IoSearch } from "react-icons/io5";
 
-const ingredients = [
-  {
-    title: "Pantry Essentials",
-    image: "/images/ingredients/pantry-essentials.png",
-    data: [
-      "Flour",
-      "Sugar",
-      "Salt",
-      "Pepper",
-      "Olive Oil",
-      "Vegetable Oil",
-      "Balsamic Vinegar",
-      "Soy Sauce",
-      "Honey",
-      "Maple Syrup",
-      "Rice",
-      "Pasta",
-      "Canned Tomatoes",
-      "Tomato Sauce",
-      "Canned Beans",
-      "Lentils",
-      "Quinoa",
-      "Oats",
-      "Cereal",
-      "Peanut Butter",
-      "Jam",
-      "Canned Tuna",
-      "Canned Salmon",
-      "Chicken Broth",
-      "Beef Broth",
-      "Dried Herbs",
-      "Spices",
-      "All-Purpose Seasoning",
-      "Onions",
-      "Garlic",
-      "Potatoes",
-      "Canned Vegetables",
-      "Frozen Vegetables",
-      "Milk",
-      "Eggs",
-      "Cheese",
-      "Butter",
-      "Bread",
-    ],
-  },
-  {
-    title: "Vegetables & Greens",
-    image: "/images/ingredients/vegetables.png",
-    data: [
-      "Broccoli",
-      "Spinach",
-      "Carrot",
-      "Kale",
-      "Cucumber",
-      "Bell Pepper",
-      "Tomato",
-      "Lettuce",
-      "Cabbage",
-      "Cauliflower",
-      "Zucchini",
-      "Radish",
-      "Eggplant",
-      "Asparagus",
-      "Brussels Sprouts",
-      "Green Beans",
-      "Peas",
-      "Sweet Potato",
-      "Onion",
-      "Garlic",
-      "Ginger",
-      "Leek",
-      "Artichoke",
-      "Celery",
-      "Pumpkin",
-      "Butternut Squash",
-      "Chard",
-      "Beet",
-      "Turnip",
-      "Collard Greens",
-      "Romaine Lettuce",
-      "Arugula",
-      "Watercress",
-      "Okra",
-      "Cilantro",
-      "Parsley",
-      "Dill",
-      "Mint",
-      "Thyme",
-      "Rosemary",
-      "Basil",
-      "Chives",
-      "Coriander",
-      "Sage",
-      "Oregano",
-      "Fennel",
-      "Mustard Greens",
-      "Water Spinach",
-    ],
-  },
-  {
-    title: "Fruits",
-    image: "/images/ingredients/fruits-img.png",
-    data: [
-      "Apple",
-      "Banana",
-      "Orange",
-      "Grapes",
-      "Strawberry",
-      "Watermelon",
-      "Pineapple",
-      "Mango",
-      "Kiwi",
-      "Blueberry",
-      "Peach",
-      "Cherry",
-      "Pear",
-      "Plum",
-      "Raspberry",
-      "Apricot",
-      "Avocado",
-      "Pomegranate",
-      "Cranberry",
-      "Coconut",
-    ],
-  },
-];
+
 
 export default function CookPage() {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
@@ -196,7 +72,7 @@ export default function CookPage() {
                 <div className="border-b border-gray-500">
                   <div className=" flex items-center justify-center gap-3">
                     <Image
-                      src={item.image}
+                      src={`/images/ingredients/${item.image}.png`}
                       width={10000}
                       height={10000}
                       alt="ingredient image"
@@ -231,9 +107,8 @@ export default function CookPage() {
         </div>
       </div>
       <div
-        className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${
-          switchSearch ? "hidden" : "block"
-        }`}
+        className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${switchSearch ? "hidden" : "block"
+          }`}
       >
         <div className="w-[95%] mx-auto mt-7 ">
           <div className="flex items-center justify-between   rounded-lg">
