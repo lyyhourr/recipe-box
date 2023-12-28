@@ -1,17 +1,19 @@
 "use client";
 import Button from "@/components/Button";
 import Menu from "@/components/Menu";
-import RecipePage from "@/components/RecipePage";
+import RecipePage from "./RecipePage";
 import { ingredients } from "@/constant/const";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { IoArrowBack, IoSearch } from "react-icons/io5";
+import { IoSearch } from "react-icons/io5";
 
 
 
 export default function CookPage() {
+
+    const [allIngredients,setAllIngredients] = useState(ingredients)
     const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
     const [switchSearch, setSwitchSearch] = useState(true);
 
@@ -67,7 +69,7 @@ export default function CookPage() {
                     className={`h-full  w-full bg-white p-2 rounded-3xl overflow-auto  lg:block`}
                 >
                     <div className="mt-3 w-[95%] mx-auto flex flex-col gap-10 ">
-                        {ingredients.map((item, i) => (
+                        {allIngredients.map((item, i) => (
                             <div className="shadow-xl rounded-xl " key={i}>
                                 <div className="border-b border-gray-500">
                                     <div className=" flex items-center justify-center gap-3">
@@ -82,7 +84,7 @@ export default function CookPage() {
                                     </div>
                                     <p className="text-center text-gray-600 text-xl py-1">
                                         {" "}
-                                        0 / {item.data.length} Ingredients
+                                        {item.selected} / {item.data.length} Ingredients
                                     </p>
                                 </div>
                                 <div className="flex gap-2 flex-wrap w-[95%] h-[250px] overflow-auto py-3 mx-auto">

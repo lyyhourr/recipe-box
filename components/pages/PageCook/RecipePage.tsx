@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
-import Button from './Button'
-import { IoArrowBack, IoSearch } from 'react-icons/io5'
+import Button from '../../Button'
+import { IoSearch } from 'react-icons/io5'
 import Image from 'next/image'
-import Menu from './Menu'
+import Menu from '../../Menu'
 
 interface RecipePageProps {
   setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>
