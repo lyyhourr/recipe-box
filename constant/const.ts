@@ -1,15 +1,14 @@
-
-export interface Ingredient{
-  title:string
-  image:string
-  selected:string[]
-  data:string[]
+export interface Ingredient {
+  title: string;
+  image: string;
+  selected: string[];
+  data: string[];
 }
-export const Ingredients : Ingredient[] = [
+export const Ingredients: Ingredient[] = [
   {
     title: "Pantry Essentials",
     image: "pantry-essentials",
-    selected : [],
+    selected: [],
     data: [
       "Flour",
       "Sugar",
@@ -54,7 +53,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Vegetables & Greens",
     image: "vegetables-and-greens",
-    selected : [],
+    selected: [],
     data: [
       "Broccoli",
       "Spinach",
@@ -109,7 +108,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Fruits",
     image: "fruits",
-    selected : [],
+    selected: [],
     data: [
       "Apple",
       "Banana",
@@ -136,7 +135,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Mushroom",
     image: "mushroom",
-    selected : [],
+    selected: [],
     data: [
       "Agaricus blazei",
       "Amanita muscaria",
@@ -180,7 +179,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Berries",
     image: "berries",
-    selected : [],
+    selected: [],
     data: [
       "Acai Berry",
       "Bilberry",
@@ -226,7 +225,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Nuts and Seeds",
     image: "nuts-and-seeds",
-    selected : [],
+    selected: [],
     data: [
       "Almond",
       "Brazil Nut",
@@ -272,7 +271,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Cheeses",
     image: "cheeses",
-    selected : [],
+    selected: [],
     data: [
       "Cheddar",
       "Parmesan",
@@ -318,7 +317,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Meats",
     image: "meats",
-    selected : [],
+    selected: [],
     data: [
       "Chicken",
       "Beef",
@@ -365,7 +364,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Fishs",
     image: "fishs",
-    selected : [], 
+    selected: [],
     data: [
       "Salmon",
       "Tuna",
@@ -413,7 +412,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Seafood & Seaweed",
     image: "seafood-and-seaweed",
-    selected : [],
+    selected: [],
     data: [
       "Shrimp",
       "Crab",
@@ -460,7 +459,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Herbs & Spices",
     image: "herbs-and-spices",
-    selected : [],
+    selected: [],
     data: [
       "Basil",
       "Cilantro",
@@ -507,7 +506,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Grains & Cereals",
     image: "grains-and-cereals",
-    selected : [],
+    selected: [],
     data: [
       "Rice",
       "Quinoa",
@@ -554,7 +553,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Bread & SaltySnacks",
     image: "bread-and-saltysnacks",
-    selected : [],
+    selected: [],
     data: [
       "Baguette",
       "Sourdough",
@@ -600,7 +599,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Canned Food",
     image: "canned-food",
-    selected : [],
+    selected: [],
     data: [
       "Canned Tomatoes",
       "Canned Corn",
@@ -647,7 +646,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Soups StewsStocks",
     image: "soups-stewsstocks",
-    selected : [],
+    selected: [],
     data: [
       "Chicken Noodle Soup",
       "Tomato Soup",
@@ -694,7 +693,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Desserts & SweetSnacks",
     image: "desserts-and-sweetsnacks",
-    selected : [],
+    selected: [],
     data: [
       "Chocolate Cake",
       "Vanilla Cupcakes",
@@ -740,7 +739,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Condiments",
     image: "condiments",
-    selected : [],
+    selected: [],
     data: [
       "Ketchup",
       "Mustard",
@@ -787,7 +786,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Oils & Fats",
     image: "oils-and-fats",
-    selected : [],
+    selected: [],
     data: [
       "Olive Oil",
       "Vegetable Oil",
@@ -834,7 +833,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Baking Ingredients",
     image: "baking-ingredients",
-    selected : [],
+    selected: [],
     data: [
       "All-Purpose Flour",
       "Whole Wheat Flour",
@@ -881,7 +880,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Seasonings & SpiceBlends",
     image: "seasonings-and-spiceblends",
-    selected : [],
+    selected: [],
     data: [
       "Salt",
       "Black Pepper",
@@ -929,7 +928,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Sugar & Sweeteners",
     image: "sugar-and-sweeteners",
-    selected : [],
+    selected: [],
     data: [
       "Brown Sugar",
       "Powdered Sugar",
@@ -973,7 +972,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Poultry",
     image: "poultry",
-    selected : [],
+    selected: [],
     data: [
       "Chicken (Whole)",
       "Chicken Breast",
@@ -1019,7 +1018,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Dairy Free Meat Substitutes",
     image: "dairy-free-meat-substitutes",
-    selected : [],
+    selected: [],
     data: [
       "Tofu",
       "Tempeh",
@@ -1066,7 +1065,7 @@ export const Ingredients : Ingredient[] = [
   {
     title: "Dairy & Eggs",
     image: "dairy-and-eggs",
-    selected : [],
+    selected: [],
     data: [
       "Milk",
       "Whole Milk",
@@ -1110,11 +1109,10 @@ export const Ingredients : Ingredient[] = [
   },
 ];
 
-export const AllIngredientDatas:string[]= []
+export const AllIngredientDatas: string[] = [];
 
-for(let i = 0; i < Ingredients.length;i++){
-  for(let ii = 0; ii < Ingredients[i].data.length; ii++){
-    AllIngredientDatas.push(Ingredients[i].data[ii])
+for (let i = 0; i < Ingredients.length; i++) {
+  for (let ii = 0; ii < Ingredients[i].data.length; ii++) {
+    AllIngredientDatas.push(Ingredients[i].data[ii]);
   }
 }
-

@@ -11,23 +11,23 @@ import { IoSearch } from "react-icons/io5";
 
 export default function CookPage() {
 
-    const [allIngredients,setAllIngredients] = useState(Ingredients)
+    const [allIngredients, setAllIngredients] = useState(Ingredients)
     const [switchSearch, setSwitchSearch] = useState(true);
     const [searchValue, setSearchValue] = useState('')
 
-    const handleSearchIngredients = (value:any) => {
+    const handleSearchIngredients = (value: any) => {
         setSearchValue(value)
     }
 
     console.log(AllIngredientDatas)
 
-    function handleSelectedIngredients(name:string,index:number){
+    function handleSelectedIngredients(name: string, index: number) {
         const isSelected = allIngredients[index].selected.includes(name);
-        setAllIngredients(prev => prev.map((item:Ingredient,i) => i === index 
-        ? 
-        {...item,selected:isSelected ? item.selected.filter(select=>select !== name) : [...item.selected,name]} 
-        : 
-        item))
+        setAllIngredients(prev => prev.map((item: Ingredient, i) => i === index
+            ?
+            { ...item, selected: isSelected ? item.selected.filter(select => select !== name) : [...item.selected, name] }
+            :
+            item))
     }
 
     return (
@@ -64,9 +64,9 @@ export default function CookPage() {
                             value={searchValue}
                             className="outline-none text-lg w-[90%]"
                             placeholder="search your ingredients "
-                            onChange={(e)=>handleSearchIngredients(e.target.value)}
+                            onChange={(e) => handleSearchIngredients(e.target.value)}
                         />
-                        <div className={cn(`bg-white hidden w-full flex-col gap-3 left-0 absolute -bottom-4 rounded-b-lg px-4`,{'flex':searchValue})}>
+                        <div className={cn(`bg-white hidden w-full flex-col gap-3 left-0 absolute -bottom-4 rounded-b-lg px-4`, { 'flex': searchValue })}>
                             hi
                         </div>
                     </div>
@@ -109,7 +109,7 @@ export default function CookPage() {
                                                 )
                                             )}
                                             key={idx}
-                                            onClick={() => handleSelectedIngredients(ingred,i)}
+                                            onClick={() => handleSelectedIngredients(ingred, i)}
                                         >
                                             {ingred}
                                         </button>
