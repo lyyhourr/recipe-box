@@ -42,43 +42,46 @@ const PopularFoods = [{
 
 export default function PopularRecipe() {
 
-    const [slides,setSlides] = useState(1)
+    const [slides, setSlides] = useState(1)
 
     const setSlidesPerview = () => {
         setSlides(
-          window.innerWidth <= 720 ? 1 : 2
+            window.innerWidth <= 720 ? 1 : 2
         );
-      }
+    }
 
     React.useEffect(() => {
         setSlidesPerview();
         window.addEventListener("resize", setSlidesPerview);
 
         return () => {
-          window.removeEventListener("resize", setSlidesPerview);
+            window.removeEventListener("resize", setSlidesPerview);
         };
-      }, []);
+    }, []);
 
     return (
         <Swiper
-        modules={[Navigation,Autoplay]} 
-        navigation
-        autoplay
-        loop
-        slidesPerView={slides}
-        spaceBetween={'10px'}
-        className="w-[80%]">
+            modules={[Navigation, Autoplay]}
+            navigation
+            autoplay
+            loop
+            slidesPerView={slides}
+            spaceBetween={'10px'}
+            className="w-[80%]">
             {
                 PopularFoods.map(food => (
-                    <SwiperSlide  key={food.img} className='flex items-center justify-center py-3'>
+                    <SwiperSlide key={food.img} className='flex items-center justify-center py-3'>
                         <div className='border-2 border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
-                            <Image
-                                alt=""
-                                width={10000}
-                                height={100000}
-                                className="border-2 border-black rounded-lg"
-                                src={food.img}
-                            />
+                            <div className='flex justify-center'>
+
+                                <Image
+                                    alt=""
+                                    width={10000}
+                                    height={100000}
+                                    className="border-2 border-black rounded-lg bg-cover  h-[250px]  lg:h-[300px] xl:h-[400px]"
+                                    src={food.img}
+                                />
+                            </div>
                             <div className="flex flex-col gap-1">
                                 <h1 className="text-lg md:text-2xl md:min-h-[70px] font-semibold">{food.name}</h1>
                                 <div className="flex lg:items-center justify-between lg:flex-row flex-col text-xs">
