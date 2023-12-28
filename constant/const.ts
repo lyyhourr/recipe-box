@@ -1,8 +1,16 @@
-export const ingredients = [
+
+export interface Ingredient{
+  title:string
+  image:string
+  selected:string[]
+  data:string[]
+}
+
+export const ingredients : Ingredient[] = [
   {
     title: "Pantry Essentials",
     image: "pantry-essentials",
-    selected : [''],
+    selected : [],
     data: [
       "Flour",
       "Sugar",
@@ -47,7 +55,7 @@ export const ingredients = [
   {
     title: "Vegetables & Greens",
     image: "vegetables-and-greens",
-    selected : [''],
+    selected : [],
     data: [
       "Broccoli",
       "Spinach",
@@ -102,7 +110,7 @@ export const ingredients = [
   {
     title: "Fruits",
     image: "fruits",
-    selected : [''],
+    selected : [],
     data: [
       "Apple",
       "Banana",
@@ -129,7 +137,7 @@ export const ingredients = [
   {
     title: "Mushroom",
     image: "mushroom",
-    selected : [''],
+    selected : [],
     data: [
       "Agaricus blazei",
       "Amanita muscaria",
@@ -173,7 +181,7 @@ export const ingredients = [
   {
     title: "Berries",
     image: "berries",
-    selected : [''],
+    selected : [],
     data: [
       "Acai Berry",
       "Bilberry",
@@ -219,7 +227,7 @@ export const ingredients = [
   {
     title: "Nuts and Seeds",
     image: "nuts-and-seeds",
-    selected : [''],
+    selected : [],
     data: [
       "Almond",
       "Brazil Nut",
@@ -265,7 +273,7 @@ export const ingredients = [
   {
     title: "Cheeses",
     image: "cheeses",
-    selected : [''],
+    selected : [],
     data: [
       "Cheddar",
       "Parmesan",
@@ -311,7 +319,7 @@ export const ingredients = [
   {
     title: "Meats",
     image: "meats",
-    selected : [''],
+    selected : [],
     data: [
       "Chicken",
       "Beef",
@@ -358,7 +366,7 @@ export const ingredients = [
   {
     title: "Fishs",
     image: "fishs",
-    selected : [''], 
+    selected : [], 
     data: [
       "Salmon",
       "Tuna",
@@ -406,7 +414,7 @@ export const ingredients = [
   {
     title: "Seafood & Seaweed",
     image: "seafood-and-seaweed",
-    selected : [''],
+    selected : [],
     data: [
       "Shrimp",
       "Crab",
@@ -453,7 +461,7 @@ export const ingredients = [
   {
     title: "Herbs & Spices",
     image: "herbs-and-spices",
-    selected : [''],
+    selected : [],
     data: [
       "Basil",
       "Cilantro",
@@ -500,7 +508,7 @@ export const ingredients = [
   {
     title: "Grains & Cereals",
     image: "grains-and-cereals",
-    selected : [''],
+    selected : [],
     data: [
       "Rice",
       "Quinoa",
@@ -547,7 +555,7 @@ export const ingredients = [
   {
     title: "Bread & SaltySnacks",
     image: "bread-and-saltysnacks",
-    selected : [''],
+    selected : [],
     data: [
       "Baguette",
       "Sourdough",
@@ -593,7 +601,7 @@ export const ingredients = [
   {
     title: "Canned Food",
     image: "canned-food",
-    selected : [''],
+    selected : [],
     data: [
       "Canned Tomatoes",
       "Canned Corn",
@@ -640,7 +648,7 @@ export const ingredients = [
   {
     title: "Soups StewsStocks",
     image: "soups-stewsstocks",
-    selected : [''],
+    selected : [],
     data: [
       "Chicken Noodle Soup",
       "Tomato Soup",
@@ -687,7 +695,7 @@ export const ingredients = [
   {
     title: "Desserts & SweetSnacks",
     image: "desserts-and-sweetsnacks",
-    selected : [''],
+    selected : [],
     data: [
       "Chocolate Cake",
       "Vanilla Cupcakes",
@@ -733,7 +741,7 @@ export const ingredients = [
   {
     title: "Condiments",
     image: "condiments",
-    selected : [''],
+    selected : [],
     data: [
       "Ketchup",
       "Mustard",
@@ -780,7 +788,7 @@ export const ingredients = [
   {
     title: "Oils & Fats",
     image: "oils-and-fats",
-    selected : [''],
+    selected : [],
     data: [
       "Olive Oil",
       "Vegetable Oil",
@@ -827,7 +835,7 @@ export const ingredients = [
   {
     title: "Baking Ingredients",
     image: "baking-ingredients",
-    selected : [''],
+    selected : [],
     data: [
       "All-Purpose Flour",
       "Whole Wheat Flour",
@@ -874,7 +882,7 @@ export const ingredients = [
   {
     title: "Seasonings & SpiceBlends",
     image: "seasonings-and-spiceblends",
-    selected : [''],
+    selected : [],
     data: [
       "Salt",
       "Black Pepper",
@@ -922,7 +930,7 @@ export const ingredients = [
   {
     title: "Sugar & Sweeteners",
     image: "sugar-and-sweeteners",
-    selected : [''],
+    selected : [],
     data: [
       "Brown Sugar",
       "Powdered Sugar",
@@ -966,7 +974,7 @@ export const ingredients = [
   {
     title: "Poultry",
     image: "poultry",
-    selected : [''],
+    selected : [],
     data: [
       "Chicken (Whole)",
       "Chicken Breast",
@@ -1012,7 +1020,7 @@ export const ingredients = [
   {
     title: "Dairy Free Meat Substitutes",
     image: "dairy-free-meat-substitutes",
-    selected : [''],
+    selected : [],
     data: [
       "Tofu",
       "Tempeh",
@@ -1059,7 +1067,7 @@ export const ingredients = [
   {
     title: "Dairy & Eggs",
     image: "dairy-and-eggs",
-    selected : [''],
+    selected : [],
     data: [
       "Milk",
       "Whole Milk",

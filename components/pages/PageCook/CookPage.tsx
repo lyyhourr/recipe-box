@@ -2,27 +2,27 @@
 import Button from "@/components/Button";
 import Menu from "@/components/Menu";
 import RecipePage from "./RecipePage";
-import { ingredients } from "@/constant/const";
+import { Ingredient, ingredients } from "@/constant/const";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
-
-
 export default function CookPage() {
 
     const [allIngredients,setAllIngredients] = useState(ingredients)
-    const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
     const [switchSearch, setSwitchSearch] = useState(true);
 
-    function handleSelectedIngredients(name: string) {
-        const isSelected = selectedIngredients.includes(name);
-        setSelectedIngredients((prev) =>
-            isSelected ? prev.filter((item) => item !== name) : [...prev, name]
-        );
+    function handleSelectedIngredients(name:string,index:number){
+        const isSelected = allIngredients[index].selected.includes(name);
+        setAllIngredients(prev => prev.map((item:Ingredient,i) => i === index 
+        ? 
+        {...item,selected:isSelected ? item.selected.filter(select=>select !== name) : [...item.selected,name]} 
+        : 
+        item))
     }
+
     return (
         <main className="flex justify-center h-screen bg-black p-1 gap-1">
             <div
@@ -84,7 +84,7 @@ export default function CookPage() {
                                     </div>
                                     <p className="text-center text-gray-600 text-xl py-1">
                                         {" "}
-                                        {item.selected} / {item.data.length} Ingredients
+                                        {item.selected.length} / {item.data.length} Ingredients
                                     </p>
                                 </div>
                                 <div className="flex gap-2 flex-wrap w-[95%] h-[250px] overflow-auto py-3 mx-auto">
@@ -92,12 +92,12 @@ export default function CookPage() {
                                         <button
                                             className={cn(
                                                 ` px-3 py-1 rounded-md text-gray-500 bg-gray-200 `,
-                                                selectedIngredients.map(
+                                                item.selected.map(
                                                     (item) => item === ingred && "text-white bg-green-500"
                                                 )
                                             )}
                                             key={idx}
-                                            onClick={() => handleSelectedIngredients(ingred)}
+                                            onClick={() => handleSelectedIngredients(ingred,i)}
                                         >
                                             {ingred}
                                         </button>
