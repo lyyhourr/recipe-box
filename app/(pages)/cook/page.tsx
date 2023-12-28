@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import Menu from "@/components/Menu";
+import RecipePage from "@/components/RecipePage";
 import { ingredients } from "@/constant/const";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -28,8 +29,8 @@ export default function CookPage() {
         `}
       >
         <div className="m-2 p-2 flex flex-col gap-3">
-          <div className="flex items-center justify-between lg:justify-center  rounded-lg">
-            <Link href={"/"} className="lg:hidden">
+          <div className="flex items-center justify-between lg:justify-between  rounded-lg">
+            <Link href={"/"} className="">
               <Button bgColor="white">
                 <IoArrowBack className="w-6 h-6 duration-300 hover:-translate-x-1" />
               </Button>
@@ -47,6 +48,7 @@ export default function CookPage() {
             <div className="lg:hidden">
               <Menu />
             </div>
+            <div className="hidden lg:block"></div>
           </div>
           <div className="bg-white w-full flex pl-4 py-2 items-center gap-2  rounded-lg ">
             <IoSearch className="w-7 h-7 text-gray-500" />
@@ -110,44 +112,7 @@ export default function CookPage() {
         className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${switchSearch ? "hidden" : "block"
           }`}
       >
-        <div className="w-[95%] mx-auto mt-7 ">
-          <div className="flex items-center justify-between   rounded-lg">
-            <Link href={"/"}>
-              <Button bgColor="white">
-                <IoArrowBack className="w-6 h-6 duration-300 hover:-translate-x-1" />
-              </Button>
-            </Link>
-            <Link
-              href={"/"}
-              className="flex justify-center gap-2 items-center "
-            >
-              <Image
-                src={"/logos/main-logo.png"}
-                width={10000}
-                height={10000}
-                className="w-[70px] h-[60px]"
-                alt="main logo"
-              />
-              <p className="text-2xl text-black uppercase  ">recipes-box</p>
-            </Link>
-            <Menu />
-          </div>
-          <p className="text-center">You can make xxxx recipes</p>
-          <div className="bg-white w-full flex pl-4 py-2 items-center gap-2 my-2     rounded-lg ">
-            <IoSearch className="w-7 h-7 text-gray-500" />
-            <input
-              type="text"
-              className="outline-none text-lg w-[95%]"
-              placeholder="find foods recipes"
-            />
-          </div>
-          <Button
-            className="bg-white lg:hidden text-black w-fit "
-            onClick={() => setSwitchSearch(true)}
-          >
-            Switch to Ingredient
-          </Button>
-        </div>
+        <RecipePage setSwitchSearch = {setSwitchSearch} />
       </div>
     </main>
   );

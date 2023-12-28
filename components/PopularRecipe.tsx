@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from "next/image";
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import 'swiper/css';
 import 'swiper/css/navigation'
@@ -52,7 +52,6 @@ export default function PopularRecipe() {
 
     React.useEffect(() => {
         setSlidesPerview();
-        
         window.addEventListener("resize", setSlidesPerview);
 
         return () => {
@@ -71,7 +70,7 @@ export default function PopularRecipe() {
         className="w-[80%]">
             {
                 PopularFoods.map(food => (
-                    <SwiperSlide key={food.img} className='flex items-center justify-center py-3'>
+                    <SwiperSlide  key={food.img} className='flex items-center justify-center py-3'>
                         <div className='border-2 border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
                             <Image
                                 alt=""
