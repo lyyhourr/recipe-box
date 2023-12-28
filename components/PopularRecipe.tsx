@@ -71,14 +71,13 @@ export default function PopularRecipe() {
             {
                 PopularFoods.map(food => (
                     <SwiperSlide key={food.img} className='flex items-center justify-center py-3'>
-                        <div className='border-2 border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
-                            <div className='flex justify-center'>
-
+                        <div className='border-2 min-w-full border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
+                            <div className='h-[200px] lg:h-[300px]'>
                                 <Image
                                     alt=""
                                     width={10000}
                                     height={100000}
-                                    className="border-2 border-black rounded-lg bg-cover  h-[250px]  lg:h-[300px] xl:h-[400px]"
+                                    className="border-2 border-black rounded-lg w-full h-full bg-cover"
                                     src={food.img}
                                 />
                             </div>

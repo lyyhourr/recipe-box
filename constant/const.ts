@@ -5,8 +5,7 @@ export interface Ingredient{
   selected:string[]
   data:string[]
 }
-
-export const ingredients : Ingredient[] = [
+export const Ingredients : Ingredient[] = [
   {
     title: "Pantry Essentials",
     image: "pantry-essentials",
@@ -1110,3 +1109,12 @@ export const ingredients : Ingredient[] = [
     ],
   },
 ];
+
+export const AllIngredientDatas:string[]= []
+
+for(let i = 0; i < Ingredients.length;i++){
+  for(let ii = 0; ii < Ingredients[i].data.length; ii++){
+    AllIngredientDatas.push(Ingredients[i].data[ii])
+  }
+}
+

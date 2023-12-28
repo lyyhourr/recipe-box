@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import Menu from "@/components/Menu";
 import RecipePage from "./RecipePage";
-import { Ingredient, ingredients } from "@/constant/const";
+import { AllIngredientDatas, Ingredient, Ingredients } from "@/constant/const";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,8 +11,15 @@ import { IoSearch } from "react-icons/io5";
 
 export default function CookPage() {
 
-    const [allIngredients,setAllIngredients] = useState(ingredients)
+    const [allIngredients,setAllIngredients] = useState(Ingredients)
     const [switchSearch, setSwitchSearch] = useState(true);
+    const [searchValue, setSearchValue] = useState('')
+
+    const handleSearchIngredients = (value:any) => {
+        setSearchValue(value)
+    }
+
+    console.log(AllIngredientDatas)
 
     function handleSelectedIngredients(name:string,index:number){
         const isSelected = allIngredients[index].selected.includes(name);
@@ -50,13 +57,18 @@ export default function CookPage() {
                         </div>
                         <div className="hidden lg:block"></div>
                     </div>
-                    <div className="bg-white w-full flex pl-4 py-2 items-center gap-2  rounded-lg ">
+                    <div className="bg-white relative w-full flex pl-4 py-2 items-center gap-2  rounded-lg ">
                         <IoSearch className="w-7 h-7 text-gray-500" />
                         <input
                             type="text"
+                            value={searchValue}
                             className="outline-none text-lg w-[90%]"
                             placeholder="search your ingredients "
+                            onChange={(e)=>handleSearchIngredients(e.target.value)}
                         />
+                        <div className={cn(`bg-white hidden w-full flex-col gap-3 left-0 absolute -bottom-4 rounded-b-lg px-4`,{'flex':searchValue})}>
+                            hi
+                        </div>
                     </div>
                     <Button
                         className="bg-white text-black lg:hidden w-fit "
@@ -66,7 +78,7 @@ export default function CookPage() {
                     </Button>
                 </div>
                 <div
-                    className={`h-full  w-full bg-white p-2 rounded-3xl overflow-auto  lg:block`}
+                    className={`h-full  w-full bg-white p-2 rounded-t-3xl overflow-auto  lg:block`}
                 >
                     <div className="mt-3 w-[95%] mx-auto flex flex-col gap-10 ">
                         {allIngredients.map((item, i) => (
