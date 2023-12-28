@@ -71,9 +71,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full p-5 rounded-md bg-gradient-pink">
+        <div className=" lg:w-2/3 p-5 rounded-md bg-gradient-pink">
           <h1 className="text-5xl">Popular Recipe</h1>
-          <div className="flex justify-center">
+          <div className="flex py-10 justify-center">
             <PopularRecipe />
           </div>
         </div>
