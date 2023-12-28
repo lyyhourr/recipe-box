@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { Divide } from "lucide-react";
 
 export default function CookPage() {
 
@@ -18,8 +19,6 @@ export default function CookPage() {
     const handleSearchIngredients = (value: any) => {
         setSearchValue(value)
     }
-
-    console.log(AllIngredientDatas)
 
     function handleSelectedIngredients(name: string, index: number) {
         const isSelected = allIngredients[index].selected.includes(name);
@@ -66,8 +65,12 @@ export default function CookPage() {
                             placeholder="search your ingredients "
                             onChange={(e) => handleSearchIngredients(e.target.value)}
                         />
-                        <div className={cn(`bg-white hidden w-full flex-col gap-3 left-0 absolute -bottom-4 rounded-b-lg px-4`, { 'flex': searchValue })}>
-                            hi
+                        <div className={cn(`bg-white hidden w-full flex-col gap-3 left-0 absolute top-9 overflow-auto h-fit max-h-[300px] rounded-b-lg px-4`, { 'flex': searchValue })}>
+                                {AllIngredientDatas.slice(0,20).map(data=>(
+                                    <div className="text-black" key={data}>
+                                        {data.includes(searchValue) && data}
+                                    </div>
+                                ))}
                         </div>
                     </div>
                     <Button
