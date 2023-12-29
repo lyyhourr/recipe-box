@@ -102,7 +102,7 @@ export default function CookPage() {
                         <div
                             ref={searchRef}
                             className={cn(
-                                `bg-white hidden w-full flex-col left-0 absolute top-9 overflow-auto max-h-[300px] rounded-b-lg pt-1 px-4`,
+                                `bg-white hidden w-full z-10 flex-col left-0 absolute top-9 overflow-auto max-h-[300px] rounded-b-lg pt-1 px-4`,
                                 { flex: isOpen }
                             )}
                         >

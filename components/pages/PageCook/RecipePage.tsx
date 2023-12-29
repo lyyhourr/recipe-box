@@ -101,8 +101,8 @@ export default function RecipePage(props: RecipePageProps) {
         </div>
       </div>
 
-      <div className="m-2 h-[77%] px-2 bg-white rounded-2xl p-2 lg:p-0">
-        <div className="flex gap-3 items-center ">
+      <div className="my-2 h-[77%] lg:px-2 bg-white rounded-2xl py-2 lg:p-0">
+        <div className="flex px-3 lg:px-0 gap-3 items-center ">
           <Button className="bg-white text-black  lg:hidden pt-1" size="landscape" showArrow={!showOptions} onClick={() => setShowOptions(p => !p)}>{showOptions ? "Close" : "Filter"}</Button>
           <div className={`flex lg:hidden gap-1 overflow-auto ${showOptions ? " translate-x-0" : " translate-x-[-200%]"}`}>
             {optionButtons}
