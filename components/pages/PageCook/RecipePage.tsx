@@ -10,10 +10,9 @@ interface RecipePageProps {
 }
 interface FoodDataTypes {
   id: number;
-  Title: string;
-  Ingredients: string[];
-  Instructions: string;
-  Image: string;
+  title: string;
+  image: string;
+  imageType: string;
 }
 const options = [
   "minCarbs",
@@ -25,13 +24,6 @@ const options = [
   "maxFat",
   "minCholesterol",
   "maxCholesterol",
-  ,
-  "minVitaminC",
-  "maxVitaminC",
-  "minVitaminD",
-  "maxVitaminD",
-  "minIron",
-  "maxIron",
 ];
 export default function RecipePage(props: RecipePageProps) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -45,12 +37,14 @@ export default function RecipePage(props: RecipePageProps) {
   const [userQuery, setUserQuery] = useState("");
 
   function QueryFood() {
-    fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&q=${userQuery}`
-    )
-      .then((res) => res.json())
-      .then((data) => setFoodData(data.results));
 
+    selectedOption.length > 0
+      ? fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`).then((res) => res.json())
+        .then((data) => setFoodData(data))
+      : fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&q=${userQuery}`
+      ).then((res) => res.json())
+        .then((data) => setFoodData(data.results));
   }
 
   return (
@@ -81,9 +75,9 @@ export default function RecipePage(props: RecipePageProps) {
         <div className="bg-white  w-[95%] mx-auto flex pl-4 py-2 items-center gap-2 my-2     rounded-lg ">
           <IoSearch className="w-7 h-7 text-gray-500 " />
           <input
-            type="text"
+            type={selectedOption ? "number" : "text"}
             className="outline-none text-lg w-[95%]"
-            placeholder="find foods recipes"
+            placeholder={selectedOption ? `Enter ${selectedOption} (0 - 100)` : 'find foods recipes'}
             onChange={(e) => setUserQuery(e.target.value)}
           />
           <Button className="bg-white text-black mr-2" size="xs"
@@ -92,7 +86,7 @@ export default function RecipePage(props: RecipePageProps) {
         </div>
       </div>
 
-      <div className="m-2 h-[80%] px-2 bg-white rounded-2xl">
+      <div className="m-2 h-[77%] px-2 bg-white rounded-2xl">
         <div className="flex items-center transition-all duration-75 ease-in-out gap-1 lg:gap-5 pt-3 px-5 flex-wrap mb-2  pb-5">
           {options.slice(0, 6).map((opt, i) => (
             <div key={i}>
@@ -110,26 +104,26 @@ export default function RecipePage(props: RecipePageProps) {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[680px] overflow-auto rounded-xl gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[630px] overflow-auto rounded-xl gap-2">
           {foodData.length > 1 &&
             foodData.map((food, i) => (
               <div
-                className="flex h-[150px] overflow-hidden bg-green-500  rounded-lg border-black"
+                className="flex h-[150px] overflow-hidden border rounded-lg border-black"
                 key={i}
               >
                 <div className="w-full">
                   <Image
-                    src={` https:${food.Image}`}
+                    src={`${food.image}`}
                     width={10000}
                     height={10000}
                     alt=""
                     className="h-full"
                   />
                 </div>
-                <div className=" text-white p-2 w-full flex flex-col gap-8">
+                <div className="p-2 w-full flex flex-col gap-8">
                   <div className="flex h-[80px] flex-col">
-                    <p className="text-lg font-semibold overflow-scroll">{food.Title}</p>
-                    <p className="text-gray-100 text-sm">ingred</p>
+                    <p className="text-lg font-semibold overflow-scroll">{food.title}</p>
+                    <p className="text-gray-500 text-sm">ingred</p>
                   </div>
                   <div className="flex justify-end">
                     <button className=" transition-all duration-100 ease-in-out font-semibold px-1 hover:translate-x-1">

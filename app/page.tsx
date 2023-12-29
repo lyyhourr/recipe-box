@@ -55,10 +55,10 @@ export default function Home() {
       <section className="flex lg:flex-row flex-col gap-1">
         <div className="rounded-md w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
           <div className="mx-auto text-sm flex flex-col justify-center gap-5">
-            <p className="text-xl md:text-5xl">
-              <span className="text-gray-700 whitespace-nowrap">Discover </span>
-              <span className="font-bold">100K+</span> Recipes
-            </p>
+            <div className="flex gap-1 flex-col text-xl md:text-5xl">
+              <p>Discover Recipes</p>
+              <p className="font-bold">Around The World</p>
+            </div>
             <div className="">
               <p className="lg:text-2xl text-lg tracking-wide">
                 Discover a world of culinary delights at <br />
