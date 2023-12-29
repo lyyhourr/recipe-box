@@ -3,7 +3,7 @@ import Menu from "@/components/Menu";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 interface RecipePageProps {
   setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,14 +27,26 @@ const options = [
 ];
 export default function RecipePage(props: RecipePageProps) {
   const [selectedOption, setSelectedOption] = useState("");
-
+  const [showOptions, setShowOptions] = useState(true)
   const [foodData, setFoodData] = useState<FoodDataTypes[]>([]);
-
-  function handleSelectedOption(name: string) {
-    setSelectedOption((prev) => (prev === name ? "" : name));
-  }
-
   const [userQuery, setUserQuery] = useState("");
+
+
+  const optionButtons = options.slice(0, 6).map((opt, i) => (
+    <div key={i}>
+      <Button
+        className={cn(
+          selectedOption === opt
+            ? "text-white bg-green-500 border"
+            : "text-black bg-white"
+        )}
+        size="landscape"
+        onClick={() => handleSelectedOption(`${opt}`)}
+      >
+        {opt}
+      </Button>
+    </div>
+  ))
 
   function QueryFood() {
 
@@ -45,6 +57,9 @@ export default function RecipePage(props: RecipePageProps) {
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&q=${userQuery}`
       ).then((res) => res.json())
         .then((data) => setFoodData(data.results));
+  }
+  function handleSelectedOption(name: string) {
+    setSelectedOption((prev) => (prev === name ? "" : name));
   }
 
   return (
@@ -80,53 +95,45 @@ export default function RecipePage(props: RecipePageProps) {
             placeholder={selectedOption ? `Enter ${selectedOption} (0 - 100)` : 'find foods recipes'}
             onChange={(e) => setUserQuery(e.target.value)}
           />
-          <Button className="bg-white text-black mr-2" size="xs"
+          <Button className="bg-white text-black mr-2" size="landscape"
             onClick={QueryFood}
           >Search</Button>
         </div>
       </div>
 
-      <div className="m-2 h-[77%] px-2 bg-white rounded-2xl">
-        <div className="flex items-center transition-all duration-75 ease-in-out gap-1 lg:gap-5 pt-3 px-5 flex-wrap mb-2  pb-5">
-          {options.slice(0, 6).map((opt, i) => (
-            <div key={i}>
-              <Button
-                className={cn(
-                  selectedOption === opt
-                    ? "text-white bg-green-500 border"
-                    : "text-black bg-white"
-                )}
-                size="xs"
-                onClick={() => handleSelectedOption(`${opt}`)}
-              >
-                {opt}
-              </Button>
-            </div>
-          ))}
+      <div className="m-2 h-[77%] px-2 bg-white rounded-2xl p-2 lg:p-0">
+        <div className="flex gap-3 items-center ">
+          <Button className="bg-white text-black  lg:hidden pt-1" size="landscape" showArrow={!showOptions} onClick={() => setShowOptions(p => !p)}>{showOptions ? "Close" : "Filter"}</Button>
+          <div className={`flex lg:hidden gap-1 overflow-auto ${showOptions ? " translate-x-0" : " translate-x-[-200%]"}`}>
+            {optionButtons}
+          </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[630px] overflow-auto rounded-xl gap-2">
+        <div className={`hidden lg:flex items-center transition-all duration-75 ease-in-out gap-1 lg:gap-2 xl:gap-4 pt-3 px-5 flex-wrap mb-2  pb-5`}>
+          {optionButtons}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[630px] overflow-auto rounded-xl gap-2 lg:gap-5">
           {foodData.length > 1 &&
             foodData.map((food, i) => (
               <div
-                className="flex h-[150px] overflow-hidden border rounded-lg border-black"
+                className="flex h-[110px]  sm:h-[160px] md:h-[190px] lg:h-[150px] gap-3 overflow-hidden shadow-xl rounded-xl"
                 key={i}
               >
-                <div className="w-full">
+                <div className="w-4/5">
                   <Image
                     src={`${food.image}`}
                     width={10000}
                     height={10000}
                     alt=""
-                    className="h-full"
+                    className="h-full w-full"
                   />
                 </div>
-                <div className="p-2 w-full flex flex-col gap-8">
+                <div className="py-1 w-full flex flex-col justify-between ">
                   <div className="flex h-[80px] flex-col">
-                    <p className="text-lg font-semibold overflow-scroll">{food.title}</p>
+                    <p className="text-lg  overflow-scroll">{food.title}</p>
                     <p className="text-gray-500 text-sm">ingred</p>
                   </div>
                   <div className="flex justify-end">
-                    <button className=" transition-all duration-100 ease-in-out font-semibold px-1 hover:translate-x-1">
+                    <button className=" transition-all duration-100 ease-in-out text-green-500 px-1 hover:translate-x-1">
                       View Detail {`>`}
                     </button>
                   </div>
