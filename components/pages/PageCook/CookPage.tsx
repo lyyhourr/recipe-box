@@ -9,13 +9,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { Box } from "lucide-react";
 
 export default function CookPage() {
+
     const searchRef = useRef<HTMLDivElement | null>(null)
+    const [isViewSelectedPage,setViewSelectedPage] = useState(false)
     const [isOpen,setOpen] = useState(false)
     const [allIngredients, setAllIngredients] = useState(Ingredients);
     const [switchSearch, setSwitchSearch] = useState(true);
     const [searchValue, setSearchValue] = useState("");
+    const [isRemoveAllOpen,setRemoveAllOpen] = useState(false);
+    
+    const selectedIngredient = allIngredients.map(category=>category.selected).flat()
 
     useEffect(()=>{
         const handleClickOutside = (e:any) => {
@@ -35,6 +41,11 @@ export default function CookPage() {
         setSearchValue(value);
         setOpen(true)
     };
+
+    const handleRemoveAll = () => {
+        setAllIngredients(prev=>prev.map(category=>({...category,selected:[]})))
+        setRemoveAllOpen(false)
+    }
 
     function handleSelectedIngredients(name: string, index: number) {
         const isSelected = allIngredients[index].selected.includes(name);
@@ -85,13 +96,13 @@ export default function CookPage() {
                             type="text"
                             value={searchValue}
                             className="outline-none text-lg w-[90%]"
-                            placeholder="search your ingredients "
+                            placeholder="Search Ingredients"
                             onChange={(e) => handleSearchIngredients(e.target.value)}
                         />
                         <div
                             ref={searchRef}
                             className={cn(
-                                `bg-white hidden w-full flex-col left-0 absolute top-9 overflow-auto max-h-[300px] rounded-b-lg gap-1 pt-1 px-4`,
+                                `bg-white hidden w-full flex-col left-0 absolute top-9 overflow-auto max-h-[300px] rounded-b-lg pt-1 px-4`,
                                 { flex: isOpen }
                             )}
                         >
@@ -99,11 +110,11 @@ export default function CookPage() {
                                 <div key={index}>
                                     {category.data.map((ingredient,i)=>(
                                         ingredient.toLowerCase().includes(searchValue.toLowerCase()) && 
-                                        <div className="text-black w-full" key={i}>
+                                        <div className="text-black rounded-lg hover:bg-gray-100 py-2 w-full" key={i}>
                                             <button 
                                             onClick={()=>handleSelectedIngredients(ingredient,index)} 
-                                            className={cn(`hover:underline text-start bg-transparent`,
-                                            {'text-green-400':category.selected.includes(ingredient)})}
+                                            className={cn(`text-start w-full px-2 bg-transparent`,
+                                            {'text-green-500':category.selected.includes(ingredient)})}
                                             >
                                                 {ingredient}
                                             </button>
@@ -114,17 +125,49 @@ export default function CookPage() {
                             ))}
                         </div>
                     </div>
-                    <Button
-                        className="bg-white text-black lg:hidden w-fit "
-                        onClick={() => setSwitchSearch(false)}
-                    >
-                        Switch to Recipes
-                    </Button>
+                    <div className="flex flex-row-reverse justify-between">
+                        <Button
+                            className="bg-white text-black w-fit"
+                            onClick={() => setSwitchSearch(false)}
+                        >
+                            View Recipes
+                        </Button>
+                        <div className="flex items-center gap-1">
+                        <button 
+                        onClick={()=>setViewSelectedPage(prev=>!prev)} 
+                        className={cn('text-black relative rounded-lg transition-all border-black text-center duration-150 ease-in-out py-2 px-3 bg-white',{'scale-95':isViewSelectedPage})}>
+                            {
+                            <>
+                                <Box/>
+                                <div className="text-sm text-white absolute -top-2 bg-green-400 rounded-full px-2 -left-2">
+                                    {allIngredients.reduce((total,curValue)=>total + curValue.selected.length ,0)}
+                                </div> 
+                            </>
+                            }
+                            
+                        </button>
+                        {selectedIngredient.length > 0 && <button 
+                        onClick={()=>setRemoveAllOpen(true)} 
+                        className={cn('text-black relative rounded-lg transition-all text-center duration-150 ease-in-out py-2 px-3 bg-white',
+                        {'hidden':isRemoveAllOpen})}>
+                            Remove All
+                        </button>}
+                        <div className={cn('hidden gap-1 items-center',isRemoveAllOpen && 'flex')}>
+                            <button onClick={()=>setRemoveAllOpen(false)} className="bg-white rounded-lg text-black py-2 px-3">Cancel</button>
+                            <button onClick={handleRemoveAll} className="bg-red-500 py-2 px-3 rounded-lg text-white">Remove</button>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 <div
-                    className={`h-full  w-full bg-white p-2 rounded-b-lg rounded-t-2xl overflow-auto  lg:block`}
+                    className={`h-full w-full bg-white p-2 rounded-b-lg rounded-t-2xl overflow-auto  lg:block`}
                 >
-                    <div className="mt-3 w-[95%] mx-auto flex flex-col gap-10 ">
+                    {
+                        isViewSelectedPage 
+                        ? 
+                        <div>hi</div>
+                        :
+                        <div className="mt-3 w-[95%] mx-auto flex flex-col gap-10 ">
                         {allIngredients.map((item, i) => (
                             <div className="shadow-xl rounded-xl " key={i}>
                                 <div className="border-b border-gray-500">
@@ -161,8 +204,9 @@ export default function CookPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
+                        </div>
+                    }
+                </div>    
             </div>
             <div
                 className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${switchSearch ? "hidden" : "block"
