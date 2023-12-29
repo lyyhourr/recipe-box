@@ -91,22 +91,26 @@ export default function CookPage() {
                         <div
                             ref={searchRef}
                             className={cn(
-                                `bg-white hidden w-full flex-col left-0 absolute top-9 overflow-auto max-h-[300px] rounded-b-lg px-4`,
+                                `bg-white hidden w-full flex-col left-0 absolute top-9 overflow-auto max-h-[300px] rounded-b-lg gap-1 pt-1 px-4`,
                                 { flex: isOpen }
                             )}
                         >
                             {allIngredients.map((category,index) => (
-                                <>
-                                    {category.data.map((ingredent,i)=>(
-                                        ingredent.toLowerCase().includes(searchValue.toLowerCase()) && 
+                                <div key={index}>
+                                    {category.data.map((ingredient,i)=>(
+                                        ingredient.toLowerCase().includes(searchValue.toLowerCase()) && 
                                         <div className="text-black w-full" key={i}>
-                                            <button onClick={()=>handleSelectedIngredients(ingredent,index)} className="hover:underline text-start bg-transparent">
-                                                {ingredent}
+                                            <button 
+                                            onClick={()=>handleSelectedIngredients(ingredient,index)} 
+                                            className={cn(`hover:underline text-start bg-transparent`,
+                                            {'text-green-400':category.selected.includes(ingredient)})}
+                                            >
+                                                {ingredient}
                                             </button>
                                         </div>
                                     ))
                                     }
-                                </>
+                                </div>
                             ))}
                         </div>
                     </div>
