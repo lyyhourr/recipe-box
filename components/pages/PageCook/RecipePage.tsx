@@ -44,13 +44,14 @@ export default function RecipePage(props: RecipePageProps) {
 
   const [userQuery, setUserQuery] = useState("");
 
-  useEffect(() => {
+  function QueryFood() {
     fetch(
-      `https://food-recipes-with-images.p.rapidapi.com/?rapidapi-key=c28a6033e2msh54a41741757aa7ep1eae39jsn951ae2cca7a4&q=${userQuery}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&q=${userQuery}`
     )
       .then((res) => res.json())
-      .then((data) => userQuery?.length > 0 && setFoodData(data.d));
-  }, [userQuery]);
+      .then((data) => setFoodData(data.results));
+
+  }
 
   return (
     <div className="w-full h-screen">
@@ -85,6 +86,9 @@ export default function RecipePage(props: RecipePageProps) {
             placeholder="find foods recipes"
             onChange={(e) => setUserQuery(e.target.value)}
           />
+          <Button className="bg-white text-black mr-2" size="xs"
+            onClick={QueryFood}
+          >Search</Button>
         </div>
       </div>
 
@@ -106,7 +110,7 @@ export default function RecipePage(props: RecipePageProps) {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[680px] overflow-auto rounded-xl gap-2"> 
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[680px] overflow-auto rounded-xl gap-2">
           {foodData.length > 1 &&
             foodData.map((food, i) => (
               <div
