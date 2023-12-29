@@ -1,16 +1,20 @@
-"use client";
+import Button from "@/components/Button";
+import Menu from "@/components/Menu";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Button from "../../Button";
 import { IoSearch } from "react-icons/io5";
-import Image from "next/image";
-import Menu from "../../Menu";
-import { cn } from "@/lib/utils";
-
 interface RecipePageProps {
   setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
+interface FoodDataTypes {
+  id: number;
+  Title: string;
+  Ingredients: string[];
+  Instructions: string;
+  Image: string;
+}
 const options = [
   "minCarbs",
   "maxCarbs",
@@ -29,15 +33,6 @@ const options = [
   "minIron",
   "maxIron",
 ];
-
-interface FoodDataTypes {
-  id: number;
-  Title: string;
-  Ingredients: string[];
-  Instructions: string;
-  Image: string;
-}
-
 export default function RecipePage(props: RecipePageProps) {
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -51,47 +46,49 @@ export default function RecipePage(props: RecipePageProps) {
 
   useEffect(() => {
     fetch(
-      `https://food-recipes-with-images.p.rapidapi.com/?rapidapi-key=c28a6033e2msh54a41741757aa7ep1eae39jsn951ae2cca7a4&q=chicken%20soup`
+      `https://food-recipes-with-images.p.rapidapi.com/?rapidapi-key=c28a6033e2msh54a41741757aa7ep1eae39jsn951ae2cca7a4&q=${userQuery}`
     )
       .then((res) => res.json())
       .then((data) => userQuery?.length > 0 && setFoodData(data.d));
   }, [userQuery]);
 
-  console.log(foodData);
   return (
-    <div className="w-full h-screen  mt-7 ">
-      <div className="flex w-[95%] mx-auto items-center justify-between   rounded-lg">
-        <div className="hidden lg:block"></div>
-        <Button
-          bgColor="white"
-          className="lg:hidden"
-          onClick={() => props.setSwitchSearch(true)}
-        >
-          Back
-        </Button>
-        <Link href={"/"} className="flex justify-center gap-2 items-center ">
-          <Image
-            src={"/logos/main-logo.png"}
-            width={10000}
-            height={10000}
-            className="w-[70px] h-[60px]"
-            alt="main logo"
+    <div className="w-full h-screen overflow-">
+      <div className="flex flex-col gap-1 mt-5  ">
+        <div className="flex w-[95%] mx-auto items-center justify-between  rounded-lg">
+          <div className="hidden lg:block"></div>
+          <Button
+            bgColor="white"
+            className="lg:hidden"
+            onClick={() => props.setSwitchSearch(true)}
+          >
+            Back
+          </Button>
+          <Link href={"/"} className="flex justify-center gap-2 items-center ">
+            <Image
+              src={"/logos/main-logo.png"}
+              width={10000}
+              height={10000}
+              className="w-[70px] h-[60px]"
+              alt="main logo"
+            />
+            <p className="text-2xl text-black uppercase  ">recipes-box</p>
+          </Link>
+          <Menu />
+        </div>
+        <p className="text-center">You can make xxxx recipes</p>
+        <div className="bg-white  w-[95%] mx-auto flex pl-4 py-2 items-center gap-2 my-2     rounded-lg ">
+          <IoSearch className="w-7 h-7 text-gray-500 " />
+          <input
+            type="text"
+            className="outline-none text-lg w-[95%]"
+            placeholder="find foods recipes"
+            onChange={(e) => setUserQuery(e.target.value)}
           />
-          <p className="text-2xl text-black uppercase  ">recipes-box</p>
-        </Link>
-        <Menu />
+        </div>
       </div>
-      <p className="text-center">You can make xxxx recipes</p>
-      <div className="bg-white  w-[95%] mx-auto flex pl-4 py-2 items-center gap-2 my-2     rounded-lg ">
-        <IoSearch className="w-7 h-7 text-gray-500 " />
-        <input
-          type="text"
-          className="outline-none text-lg w-[95%]"
-          placeholder="find foods recipes"
-          onChange={(e) => setUserQuery(e.target.value)}
-        />
-      </div>
-      <div className="bg-white rounded-t-2xl overflow-auto h-full border border-black">
+
+      <div className="m-2 h-[80%] overflow-auto bg-white rounded-t-2xl">
         <div className="flex items-center gap-1 lg:gap-5 pt-3 px-5  flex-wrap mb-2  pb-5">
           {options.slice(0, 6).map((opt, i) => (
             <div key={i}>
@@ -109,39 +106,37 @@ export default function RecipePage(props: RecipePageProps) {
             </div>
           ))}
         </div>
-        <p className="text-xl pl-3">Total Recipes: 0000</p>
-        <div className="overflow-auto">
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 p-3 xl:grid-cols-3  h-[630px] overflow-auto  gap-2 lg:gap-4 my-3 mx-2">
-            {foodData.length > 1 &&
-              foodData.map((food, i) => (
-                <div
-                  className="flex  items-center   shadow-2xl border-2 border-black rounded-md "
-                  key={i}
-                >
-                  <div className="w-2/3 border-r-2 border-black h-full">
-                    <Image
-                      src={` https:${food.Image}`}
-                      width={10000}
-                      height={10000}
-                      alt=""
-                      className="w-full h-full bg-cover "
-                    />
+        <div className="grid grid-cols-1 sm:grid-cols-2 p-3 xl:grid-cols-3  h-[630px] overflow-auto  gap-2 lg:gap-4 my-3 mx-2">
+          {foodData.length > 1 &&
+            foodData.map((food, i) => (
+              <div
+                className="flex  items-center   shadow-2xl border-2 border-black rounded-md "
+                key={i}
+              >
+                <div className="w-2/3 border-r-2 border-black h-full">
+                  <Image
+                    src={` https:${food.Image}`}
+                    width={10000}
+                    height={10000}
+                    alt=""
+                    className="w-full h-full bg-cover "
+                  />
+                </div>
+                <div className="p-2 w-full flex flex-col gap-8">
+                  <div className="flex flex-col">
+                    <p className="text-xl">{food.Title}</p>
+                    <p className="text-gray-600">ingred</p>
                   </div>
-                  <div className="p-2 w-full flex flex-col gap-8">
-                    <div className="flex flex-col">
-                      <p className="text-xl">{food.Title}</p>
-                      <p className="text-gray-600">ingred</p>
-                    </div>
-                    <div className="flex justify-end">
-                      <button className="bg-white text-black px-4 py-[1px] rounded-md border-2 border-black border-r-4 border-b-4 active:border">
-                        View Detail
-                      </button>
-                    </div>
+                  <div className="flex justify-end">
+                    <button className="bg-white text-black px-4 py-[1px] rounded-md border-2 border-black border-r-4 border-b-4 active:border">
+                      View Detail
+                    </button>
                   </div>
                 </div>
-              ))}
-          </div> */}
+              </div>
+            ))}
         </div>
+
       </div>
     </div>
   );

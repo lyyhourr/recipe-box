@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import TestLayout from "./TestLayout";
+import TestLayout from "./RecipePage";
 
 export default function CookPage() {
   const [allIngredients, setAllIngredients] = useState(Ingredients);
@@ -25,11 +25,11 @@ export default function CookPage() {
       prev.map((item: Ingredient, i) =>
         i === index
           ? {
-              ...item,
-              selected: isSelected
-                ? item.selected.filter((select) => select !== name)
-                : [...item.selected, name],
-            }
+            ...item,
+            selected: isSelected
+              ? item.selected.filter((select) => select !== name)
+              : [...item.selected, name],
+          }
           : item
       )
     );
@@ -135,12 +135,10 @@ export default function CookPage() {
         </div>
       </div>
       <div
-        className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${
-          switchSearch ? "hidden" : "block"
-        }`}
+        className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${switchSearch ? "hidden" : "block"
+          }`}
       >
-        {/* <RecipePage setSwitchSearch={setSwitchSearch} /> */}
-        <TestLayout setSwitchSearch={setSwitchSearch} />
+        <RecipePage setSwitchSearch={setSwitchSearch} />
       </div>
     </main>
   );
