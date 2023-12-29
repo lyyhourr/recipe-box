@@ -53,7 +53,7 @@ export default function RecipePage(props: RecipePageProps) {
   }, [userQuery]);
 
   return (
-    <div className="w-full h-screen overflow-">
+    <div className="w-full h-screen">
       <div className="flex flex-col gap-1 mt-5  ">
         <div className="flex w-[95%] mx-auto items-center justify-between  rounded-lg">
           <div className="hidden lg:block"></div>
@@ -88,14 +88,14 @@ export default function RecipePage(props: RecipePageProps) {
         </div>
       </div>
 
-      <div className="m-2 h-[80%] overflow-auto bg-white rounded-t-2xl">
-        <div className="flex items-center gap-1 lg:gap-5 pt-3 px-5  flex-wrap mb-2  pb-5">
+      <div className="m-2 h-[80%] px-2 bg-white rounded-2xl">
+        <div className="flex items-center transition-all duration-75 ease-in-out gap-1 lg:gap-5 pt-3 px-5 flex-wrap mb-2  pb-5">
           {options.slice(0, 6).map((opt, i) => (
             <div key={i}>
               <Button
                 className={cn(
                   selectedOption === opt
-                    ? "text-white bg-green-500"
+                    ? "text-white bg-green-500 border"
                     : "text-black bg-white"
                 )}
                 size="xs"
@@ -106,30 +106,30 @@ export default function RecipePage(props: RecipePageProps) {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 p-3 xl:grid-cols-3  h-[630px] overflow-auto  gap-2 lg:gap-4 my-3 mx-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3 h-[680px] overflow-auto rounded-xl gap-2"> 
           {foodData.length > 1 &&
             foodData.map((food, i) => (
               <div
-                className="flex  items-center   shadow-2xl border-2 border-black rounded-md "
+                className="flex h-[150px] overflow-hidden bg-green-500  rounded-lg border-black"
                 key={i}
               >
-                <div className="w-2/3 border-r-2 border-black h-full">
+                <div className="w-full">
                   <Image
                     src={` https:${food.Image}`}
                     width={10000}
                     height={10000}
                     alt=""
-                    className="w-full h-full bg-cover "
+                    className="h-full"
                   />
                 </div>
-                <div className="p-2 w-full flex flex-col gap-8">
-                  <div className="flex flex-col">
-                    <p className="text-xl">{food.Title}</p>
-                    <p className="text-gray-600">ingred</p>
+                <div className=" text-white p-2 w-full flex flex-col gap-8">
+                  <div className="flex h-[80px] flex-col">
+                    <p className="text-lg font-semibold overflow-scroll">{food.Title}</p>
+                    <p className="text-gray-100 text-sm">ingred</p>
                   </div>
                   <div className="flex justify-end">
-                    <button className="bg-white text-black px-4 py-[1px] rounded-md border-2 border-black border-r-4 border-b-4 active:border">
-                      View Detail
+                    <button className=" transition-all duration-100 ease-in-out font-semibold px-1 hover:translate-x-1">
+                      View Detail {`>`}
                     </button>
                   </div>
                 </div>

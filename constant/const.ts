@@ -1108,11 +1108,3 @@ export const Ingredients: Ingredient[] = [
     ],
   },
 ];
-
-export const AllIngredientDatas: string[] = [];
-
-for (let i = 0; i < Ingredients.length; i++) {
-  for (let ii = 0; ii < Ingredients[i].data.length; ii++) {
-    AllIngredientDatas.push(Ingredients[i].data[ii]);
-  }
-}
