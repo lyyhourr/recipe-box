@@ -3,6 +3,7 @@ import Menu from '@/components/Menu'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
+import { env } from 'process'
 import React, { useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
@@ -97,14 +98,14 @@ export default function RecipesPage(props: RecipePageProps) {
                             placeholder={selectedOption ? `Enter ${selectedOption} (0 - 100)` : 'Find foods recipes'}
                             onChange={(e) => setUserQuery(e.target.value)}
                         />
-                        <Button className="bg-white text-black mr-2" size="landscape"
+                        <Button className=" mr-2" size="landscape" bgColor='white'
                             onClick={QueryFood}
                         >Search</Button>
                     </div>
                 </div>
 
                 <div className="flex px-3 lg:px-0 gap-3 items-center ">
-                    <Button className="bg-white text-black  lg:hidden pt-1" size="landscape" showArrow={!showOptions} onClick={() => setShowOptions(p => !p)}>{showOptions ? "Close" : "Filter"}</Button>
+                    <Button className="  lg:hidden pt-1" bgColor='white' size="landscape" showArrow={!showOptions} onClick={() => setShowOptions(p => !p)}>{showOptions ? "Close" : "Filter"}</Button>
                     <div className={`flex lg:hidden gap-1 overflow-auto ${showOptions ? " translate-x-0" : " translate-x-[-200%]"}`}>
                         {optionButtons}
                     </div>

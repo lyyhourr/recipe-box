@@ -20,7 +20,7 @@ export default function Button(props: ButtonPropsTypes) {
   return (
     <button
       className={cn(
-        ` cursor-pointer  group rounded-lg text-white px-3 py-2 transition-all duration-150 ease-in-out bg-gradient-pink border active:border border-black border-r-4 border-b-4 ${props.className}`,
+        ` cursor-pointer  group rounded-lg text-white px-3 py-2 transition-all duration-150 ease-in-out  border active:border border-black border-r-4 border-b-4 ${props.className}`,
         props.radius && `rounded-${props.radius}`,
         props.size === "xs" && "p-1 sm:p-2 lg:px-4 lg:py-1 text-sm sm:text-lg gap-1",
         props.size === "sm" && "py-2 px-2 sm:p-2 lg:px-3 lg:py-2 text-base sm:text-lg lg:text-xl gap-1",
@@ -30,6 +30,7 @@ export default function Button(props: ButtonPropsTypes) {
         props.size === "landscape" && "py-1 px-3 sm:py-1 sm:px-4 lg:px-5  text-sm sm:text-lg gap-1",
         props.showArrow && "flex items-center justify-center",
         props.bgColor === "gradient-blue" ? "bg-gradient-blue" : `bg-${props.bgColor}`,
+        !props.bgColor && "bg-gradient-pink",
         props.textColor === `${props.textColor}`,
       )}
       onClick={props.onClick}
@@ -52,6 +53,7 @@ export default function Button(props: ButtonPropsTypes) {
         <FaArrowRight
           className={cn(` duration-500 group-hover:translate-x-1`,
             props.textColor && `text-${props.textColor}`,
+            props.bgColor === "white" && "text-black",
             {
               "group-hover:text-white ":
                 props.hover && props.textColor === "black",
