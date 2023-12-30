@@ -7,6 +7,8 @@ import React, { useRef, useState } from 'react'
 import 'swiper/css';
 import 'swiper/css/navigation'
 import { Autoplay, Navigation } from 'swiper/modules';
+import { inter, lato, montserrat, openSan, poppins } from '@/font/font';
+import Button from './Button';
 
 const PopularFoods = [{
     name: 'Spicy beef and bean nachos',
@@ -81,16 +83,17 @@ export default function PopularRecipe() {
                                     src={food.img}
                                 />
                             </div>
-                            <div className="flex flex-col gap-1">
-                                <h1 className="text-lg md:text-2xl md:min-h-[70px] font-semibold">{food.name}</h1>
+                            <div className={`${inter.className} flex flex-col gap-1`}>
+                                <h1 className={`${montserrat.className} text-lg md:text-2xl md:min-h-[70px] font-semibold`}>{food.name}</h1>
                                 <div className="flex lg:items-center justify-between lg:flex-row flex-col text-xs">
                                     <div className="mb-5 lg:mb-0">
                                         <h1>Cook Time: {food.cook}</h1>
                                         <h1>Prep Time: {food.prep}</h1>
                                     </div>
-                                    <button className="hover:rounded-none transition-all duration-100 ease-in-out active:border p-1 sm:p-2 lg:px-3 lg:py-2 sm:text-lg lg:text-xl gap-1 bg-gradient-pink border border-b-4 border-r-4 border-black rounded-lg text-white">
+                                    <Button size='sm' showArrow>More Info</Button>
+                                    {/* <button className="hover:rounded-none transition-all duration-100 ease-in-out active:border p-1 sm:p-2 lg:px-3 lg:py-2 sm:text-lg lg:text-xl gap-1 bg-gradient-pink border border-b-4 border-r-4 border-black rounded-lg text-white">
                                         More Info
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>

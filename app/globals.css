@@ -12,6 +12,9 @@
   .bg-gradient-blue {
     @apply bg-gradient-to-br  from-[#B8EAF3]  via-[#ADDDE7]  to-[#8CC0CE];
   }
+  .bg-food {
+    @apply bg-[url('/images/backgrounds/food-bg.png')];
+  }
 }
 
 .heroImg {

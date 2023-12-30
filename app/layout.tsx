@@ -1,10 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins, Montserrat } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
-export const poppins = Poppins({ subsets: ['latin'], weight: ["500"] },)
-export const montserrat = Poppins({ subsets: ['latin'], weight: ["400"] },)
+import { poppins } from '@/font/font'
 
 export const metadata: Metadata = {
   title: 'Recipe Box',
@@ -18,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body className={poppins.className}>
         {children}
       </body>
     </html>

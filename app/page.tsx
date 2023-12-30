@@ -5,15 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import PopularRecipe from "@/components/PopularRecipe";
+import { inter, lato, montserrat } from "@/font/font";
 
 export default function Home() {
   return (
     <main className="flex p-1 h-full sm:p-2  lg:p-3 bg-[#000] flex-col gap-1">
       <Navbar />
       <section className="flex flex-col h-full sm:flex-row gap-1">
-        <div className="bg-gray-200 py-5 w-full justify-between rounded-md flex flex-col">
-          <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start ">
-            <p className="ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start">
+        <div className="bg-gray-200 py-5 w-full justify-between rounded-md flex flex-col bgre">
+          <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start border-2 ">
+            <p className={`${montserrat.className} ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start`}>
               We Help You Find{" "}
               <span className="leading-tight">
                 <AnimationText
@@ -28,7 +29,7 @@ export default function Home() {
             </p>
           </div>
           <div className="flex md:pb-10 sm:justify-start ml-2 md:ml-5 my-3">
-            <Link href={"/cook"}>
+            <Link href={"/cook"} className={lato.className}>
               <Button
                 hover
                 showArrow
@@ -60,7 +61,7 @@ export default function Home() {
               <p className="font-bold">Around The World</p>
             </div>
             <div className="">
-              <p className="lg:text-2xl text-lg tracking-wide">
+              <p className={`${inter.className} lg:text-2xl text-lg tracking-wide`}>
                 Discover a world of culinary delights at <br />
                 <span className="font-bold underline underline-offset-4 decoration-2">
                   RECIPE-BOX
@@ -72,7 +73,7 @@ export default function Home() {
           </div>
         </div>
         <div className=" lg:w-2/3 p-5 rounded-md bg-gradient-pink">
-          <h1 className="text-5xl">Popular Recipe</h1>
+          <h1 className={`${montserrat.className} text-5xl`}>Popular Recipe</h1>
           <div className="flex py-10 justify-center">
             <PopularRecipe />
           </div>

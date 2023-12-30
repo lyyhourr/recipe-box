@@ -1,9 +1,7 @@
 import Button from '@/components/Button'
 import Menu from '@/components/Menu'
-import { cn } from '@/lib/utils'
+import { bigShoulderText } from '@/font/font'
 import Image from 'next/image'
-import Link from 'next/link'
-import { env } from 'process'
 import React, { useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
@@ -62,14 +60,13 @@ export default function RecipesPage(props: RecipePageProps) {
         setSelectedOption((prev) => (prev === name ? "" : name));
     }
     return (
-        <main className="flex justify-center h-screen bg-black p-1 gap-1">
+        <main className="flex justify-center h-screen bg-black p-1 gap-1 ">
             <div
-                className={` flex lg:flex flex-col gap-1 w-full  rounded-lg  bg-gray-200  `}
+                className={` flex lg:flex flex-col gap-1 w-full  rounded-lg  bg-gray-200 bg-food`}
             >
 
                 <div className="flex flex-col gap-1 mt-6">
                     <div className="flex w-[95%] mx-auto items-center justify-between mb-4 rounded-lg">
-                        <div className="hidden lg:block"></div>
                         <Button
                             bgColor="white"
                             className="lg:hidden "
@@ -78,19 +75,10 @@ export default function RecipesPage(props: RecipePageProps) {
                         >
                             Back
                         </Button>
-                        <Link href={"/"} className="flex justify-center gap-2 items-center ">
-                            <Image
-                                src={"/logos/main-logo.png"}
-                                width={10000}
-                                height={10000}
-                                className="w-[70px] h-[60px]"
-                                alt="main logo"
-                            />
-                            <p className="text-2xl text-black uppercase  ">recipes-box</p>
-                        </Link>
+                        <p className={`${bigShoulderText.className} stroke-gray-600 text-5xl tracking-widest cursor-default `}>RECIPES</p>
                         <Menu />
                     </div>
-                    <div className="bg-white  w-[95%] mx-auto flex pl-4 py-1 items-center gap-2 my-    rounded-lg ">
+                    <div className="bg-white mt-3  w-[95%] mx-auto flex pl-4 py-1 items-center gap-2  rounded-lg ">
                         <IoSearch className="w-7 h-7 text-gray-500 " />
                         <input
                             type={selectedOption ? "number" : "text"}
@@ -113,7 +101,7 @@ export default function RecipesPage(props: RecipePageProps) {
                 <div className={`hidden lg:flex items-center transition-all duration-75 ease-in-out gap-1 lg:gap-2 xl:gap-4 pt-3 px-5 flex-wrap  pb-5`}>
                     {optionButtons}
                 </div>
-                <div className={`h-full w-full bg-white p-2 rounded-b-lg rounded-t-2xl overflow-auto  lg:block`}>
+                <div className={`h-full w-full bg-white  p-2 rounded-b-lg rounded-t-2xl overflow-auto  lg:block`}>
                     <div className='h-full overflow-auto'>
                         <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3   rounded-xl gap-2 lg:gap-5">
                             {foodData.length > 1 &&
