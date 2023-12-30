@@ -38,7 +38,7 @@ export const Ingredients: Ingredient[] = [
       "Dried Herbs",
       "Spices",
       "All-Purpose Seasoning",
-      "Onions",
+      "Onion",
       "Garlic",
       "Potatoes",
       "Canned Vegetables",
