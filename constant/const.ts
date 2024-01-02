@@ -440,8 +440,6 @@ export const Ingredients: Ingredient[] = [
       "Cinnamon",
       "Nutmeg",
       "Cloves",
-      "Allspice",
-      "Ginger",
       "Garlic",
       "Onion Powder",
       "Mustard Seed",

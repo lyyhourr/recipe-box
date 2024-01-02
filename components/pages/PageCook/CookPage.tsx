@@ -13,12 +13,14 @@ import RecipesPage from "./RecipesPage";
 
 const MemoRecipePage = React.memo(RecipesPage)
 
+// const storedIngredients = localStorage.getItem("Ingredients")
+
 export default function CookPage() {
 
     const searchRef = useRef<HTMLDivElement | null>(null)
     const [isViewSelectedPage, setViewSelectedPage] = useState(false)
     const [isOpen, setOpen] = useState(false)
-    const [allIngredients, setAllIngredients] = useState(Ingredients);
+    const [allIngredients, setAllIngredients] = useState<Ingredient[]>(Ingredients);
     const [switchSearch, setSwitchSearch] = useState(true);
     const [searchValue, setSearchValue] = useState("");
     const [isRemoveAllOpen, setRemoveAllOpen] = useState(false);
@@ -39,6 +41,10 @@ export default function CookPage() {
             document.removeEventListener('click', handleClickOutside);
         };
     })
+
+    // useEffect(() => {
+    //     localStorage.setItem("Ingredients",JSON.stringify(allIngredients))
+    // },[allIngredients])
 
     const handleSearchIngredients = (value: any) => {
         setSearchValue(value);

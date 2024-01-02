@@ -42,7 +42,6 @@ export default function RecipesPage(props: RecipePageProps) {
     const [foodData, setFoodData] = useState<FoodDataTypes[]>([initialData]);
     const [userQuery, setUserQuery] = useState<any>("");
 
-    const [data, setData] = useState([])
     const optionButtons = options.slice(0, 6).map((opt, i) => (
         <div key={i}>
             <Button
@@ -57,19 +56,16 @@ export default function RecipesPage(props: RecipePageProps) {
             </Button>
         </div>
     ))
+
     useEffect(() => {
-        const selectedIngreds = ["bread", "ham", "egg", "hotdog"];
         props.isSubmit &&
-            fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${selectedIngreds.toString().toLowerCase()}`)
-                .then((res) => res.json())
-                .then((data) => { setFoodData(data) });
-        // props.selectedIngredient.length &&
-        // fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${props.selectedIngredient.toString().toLowerCase()}`)
-        //     .then((res) => res.json())
-        //     .then((data) => { setFoodData(data) });
+        props.selectedIngredient.length &&
+        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${props.selectedIngredient.toString().toLowerCase()}`)
+            .then((res) => res.json())
+            .then((data) => { setFoodData(data) });
 
         props.setIsSubmit(false)
-    }, [props.isSubmit])
+    })
 
     function QueryFood() {
         if (userQuery.length) {
@@ -77,12 +73,17 @@ export default function RecipesPage(props: RecipePageProps) {
                 ?
                 fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => { setFoodData(data) })
+                    .then((data) => { data.length > 0 ? setFoodData(data) : setFoodData([{
+                        id: 1,
+                        title: 'lol',
+                        image: 'bsdf',
+                        imageType: 'png'
+                    }]) })
                 :
                 fetch(
                     `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => { setFoodData(data.results) });
+                    .then((data) => { data.results.length > 0 && setFoodData(data.results)});
         }
 
     }
@@ -168,7 +169,7 @@ export default function RecipesPage(props: RecipePageProps) {
                         </div>
                         <div className='h-full flex items-center justify-center'>
                             {
-                                foodData.length === 0 && (
+                                foodData[0].image === 'bsdf'  && (
                                     <div>
                                         <p className='text-center'>no food data</p>
                                         <Image
@@ -179,6 +180,11 @@ export default function RecipesPage(props: RecipePageProps) {
                                             className='w-[200px] h-[200px] bg-cover opacity-90 '
                                         />
                                     </div>
+                                )
+                            }
+                            {
+                                foodData[0].image==="asdf"&&(
+                                    <div className="">sdfa</div>
                                 )
                             }
                         </div>
