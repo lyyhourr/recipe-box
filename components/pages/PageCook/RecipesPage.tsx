@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import Menu from '@/components/Menu'
 import { bigShoulderText } from '@/font/font'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
     setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,6 +24,7 @@ const options = [
     "minCholesterol",
     "maxCholesterol",
 ];
+
 export default function RecipesPage(props: RecipePageProps) {
     const [selectedOption, setSelectedOption] = useState("");
     const [showOptions, setShowOptions] = useState(false)
@@ -47,15 +48,28 @@ export default function RecipesPage(props: RecipePageProps) {
     ))
 
     function QueryFood() {
-
-        selectedOption.length > 0
-            ? fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`).then((res) => res.json())
-                .then((data) => setFoodData(data))
-            : fetch(
-                `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`
-            ).then((res) => res.json())
-                .then((data) => setFoodData(data.results));
+        if (userQuery.length) {
+            selectedOption.length
+                ?
+                fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`)
+                    .then((res) => res.json())
+                    .then((data) => setFoodData(data))
+                :
+                fetch(
+                    `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`)
+                    .then((res) => res.json())
+                    .then((data) => setFoodData(data.results));
+        }
+        else {
+            console.log("empty search input")
+        }
     }
+
+
+    useEffect(() => {
+        !foodData.length && console.log("search not found!!")
+    }, [foodData])
+
     function handleSelectedOption(name: string) {
         setSelectedOption((prev) => (prev === name ? "" : name));
     }
@@ -133,6 +147,22 @@ export default function RecipesPage(props: RecipePageProps) {
                                     </div>
                                 ))}
                         </div>
+                        {
+                            foodData.length === 0 && (
+                                <div className='h-full flex items-center justify-center'>
+                                    <div>
+                                        <p className='text-center'>no food data</p>
+                                        <Image
+                                            src={"/images/crying-boy.png"}
+                                            width={10000}
+                                            height={10000}
+                                            alt=''
+                                            className='w-[200px] h-[200px] bg-cover opacity-90 '
+                                        />
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
