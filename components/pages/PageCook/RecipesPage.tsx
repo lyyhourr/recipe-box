@@ -25,10 +25,17 @@ const options = [
     "maxCholesterol",
 ];
 
+const initialData :FoodDataTypes ={
+    id:1,
+    title:'lol',
+    image:'asdf',
+    imageType:'png'
+}
+
 export default function RecipesPage(props: RecipePageProps) {
     const [selectedOption, setSelectedOption] = useState("");
     const [showOptions, setShowOptions] = useState(false)
-    const [foodData, setFoodData] = useState<FoodDataTypes[]>([]);
+    const [foodData, setFoodData] = useState<FoodDataTypes[]>([initialData]);
     const [userQuery, setUserQuery] = useState("");
 
 
@@ -53,22 +60,21 @@ export default function RecipesPage(props: RecipePageProps) {
                 ?
                 fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => setFoodData(data))
+                    .then((data) => {setFoodData(data)})
                 :
                 fetch(
                     `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => setFoodData(data.results));
+                    .then((data) => {setFoodData(data.results)});
         }
-        else {
-            console.log("empty search input")
-        }
+        // else {
+        //     console.log("empty search input")
+        // }
     }
 
-
-    useEffect(() => {
-        !foodData.length && console.log("search not found!!")
-    }, [foodData])
+    // useEffect(() => {
+    //     !foodData.length && console.log("search not found!!")
+    // }, [foodData])
 
     function handleSelectedOption(name: string) {
         setSelectedOption((prev) => (prev === name ? "" : name));
