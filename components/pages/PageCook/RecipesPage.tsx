@@ -7,6 +7,9 @@ import React, { use, useEffect, useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
     setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedIngredient:string[]
+    isSubmit : boolean
+    setIsSubmit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface FoodDataTypes {
     id: number;

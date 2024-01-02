@@ -6,10 +6,12 @@ import { Ingredient, Ingredients } from "@/constant/const";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { Box, Trash } from "lucide-react";
 import RecipesPage from "./RecipesPage";
+
+const MemoRecipePage = React.memo(RecipesPage)
 
 export default function CookPage() {
 
@@ -20,9 +22,9 @@ export default function CookPage() {
     const [switchSearch, setSwitchSearch] = useState(true);
     const [searchValue, setSearchValue] = useState("");
     const [isRemoveAllOpen, setRemoveAllOpen] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false)
 
-    const searchData =  allIngredients.map(category=>category.data).flat()
-    const selectedIngredient = allIngredients.map(category => category.selected).flat()
+    const selectedIngredient = useMemo(()=>allIngredients.map(category => category.selected).flat(),[allIngredients]) 
 
     useEffect(() => {
         const handleClickOutside = (e: any) => {
@@ -48,32 +50,22 @@ export default function CookPage() {
         setRemoveAllOpen(false)
     }
 
-    // function handleSelectedIngredients(name: string, index: number) {
-    //     const isSelected = allIngredients[index].selected.includes(name);
-    //     setAllIngredients((prev) =>
-    //         prev.map((item: Ingredient, i) =>
-    //             i === index
-    //                 ? {
-    //                     ...item,
-    //                     selected: isSelected
-    //                         ? item.selected.filter((select) => select !== name)
-    //                         : [...item.selected, name],
-    //                 }
-    //                 : item
-    //         )
-    //     );
-    // }
+    function handleSelectedIngredients(name: string, index: number) {
+        const isSelected = allIngredients[index].selected.includes(name);
+        setAllIngredients((prev) =>
+            prev.map((item: Ingredient, i) =>
+                i === index
+                    ? {
+                        ...item,
+                        selected: isSelected
+                            ? item.selected.filter((select) => select !== name)
+                            : [...item.selected, name],
+                    }
+                    : item
+            )
+        );
+    }
 
-    function handleSelectedIngredients(name: string) {
-        setAllIngredients(prev => (
-            prev.map(category=>(
-                {
-                    ...category,
-                    selected: category.data.includes(name) ? [...category.selected,name] : category.selected
-                }
-            ))
-        ))
-}
 
 function handleRemoveIngredient(name: string, index: number) {
     setAllIngredients(prev => (
@@ -133,7 +125,7 @@ return (
                             { flex: isOpen }
                         )}
                     >
-                        {/* {allIngredients.map((category, index) => (
+                        {allIngredients.map((category, index) => (
                             <div key={index}>
                                 {category.data.map((ingredient, i) => (
                                     ingredient.toLowerCase().includes(searchValue.toLowerCase()) &&
@@ -149,18 +141,6 @@ return (
                                 ))
                                 }
                             </div>
-                        ))} */}
-                        {searchData.filter((name,index)=>searchData.indexOf(name)===index).map((item,i)=>(
-                            item.toLowerCase().includes(searchValue.toLowerCase()) &&
-                            <div className="text-black rounded-lg hover:bg-gray-100 py-2 w-full" key={i}>
-                                <button
-                                    onClick={() => handleSelectedIngredients(item)}
-                                    className={cn(`text-start w-full px-2 bg-transparent`,
-                                        { 'text-green-500': allIngredients.map(category=>category.selected.includes(item))})}
-                                >
-                                    {item}
-                                </button>
-                            </div>
                         ))}
                     </div>
                 </div>
@@ -168,7 +148,7 @@ return (
                     <Button
                         className="bg-white text-black w-fit"
                         bgColor="white"
-                        onClick={() => setSwitchSearch(false)}
+                        onClick={() => {setSwitchSearch(false);setIsSubmit(true)}}
                     >
                         View Recipes
                     </Button>
@@ -207,16 +187,6 @@ return (
                         ?
                         <div className="flex p-2 flex-col gap-4">
                             <h1 className="text-xl">Your Selected Ingredients : </h1>
-                            {/* {
-                                    selectedIngredient.map((ingredient,index)=>(
-                                        <div className="flex border-b justify-between" key={index}>
-                                            <h1>{ingredient}</h1>
-                                            <button className="text-red-400" onClick={()=>{}}>
-                                                <Trash/>
-                                            </button>
-                                        </div>
-                                    ))
-                                } */}
                             {
                                 allIngredients.map((category, index) => (
                                     category.selected.map((ingre, i) => (
@@ -276,7 +246,12 @@ return (
             className={`lg:flex flex flex-col gap-1  bg-gray-200 w-full h-full  rounded-lg ${switchSearch ? "hidden" : "block"
                 }`}
         >
-            <RecipesPage setSwitchSearch={setSwitchSearch} />
+            <MemoRecipePage 
+            setIsSubmit={setIsSubmit} 
+            isSubmit={isSubmit} 
+            selectedIngredient={selectedIngredient} 
+            setSwitchSearch={setSwitchSearch}
+            />
         </div>
     </main>
 );
