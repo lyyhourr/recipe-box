@@ -187,14 +187,14 @@ export default function RecipesPage(props: RecipePageProps) {
                             }
                             {
                                 foodData[0].image === "asdf" && (
-                                    <div className='flex items-center justify-normal flex-col gap-5 '>
-                                        <p className={`text-center text-lg lg:text-2xl ${montserrat.className}`}>Select your ingredients or search recipes</p>
+                                    <div className='flex items-center justify-center flex-col gap-5 '>
+                                        <p className={`text-center text-lg lg:text-2xl ${montserrat.className}`}>Select Your Ingredients Or Search Recipes</p>
                                         <Image
                                             src={"/images/eating-noodle.png"}
                                             width={100000}
                                             height={10000}
                                             alt='food image'
-                                            className='w-[350px] h-[300px] lg:w-[500px] lg:h-[400px]'
+                                            className='w-[270px] h-[200px] lg:w-[400px] lg:h-[300px]'
                                         />
                                     </div>
                                 )

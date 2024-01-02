@@ -48,7 +48,7 @@ export default function PopularRecipe() {
 
     const setSlidesPerview = () => {
         setSlides(
-            window.innerWidth <= 720 ? 1 : 2
+            window.innerWidth <= 1280 ? 1 : 2
         );
     }
 
@@ -73,8 +73,8 @@ export default function PopularRecipe() {
             {
                 PopularFoods.map(food => (
                     <SwiperSlide key={food.img} className='flex items-center justify-center py-3'>
-                        <div className='border-2 min-w-full border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
-                            <div className='h-[200px] lg:h-[300px]'>
+                        <div className='border-2 mx-auto w-fit border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
+                            <div className='h-[200px] xl:h-[250px]'>
                                 <Image
                                     alt=""
                                     width={10000}
@@ -84,16 +84,13 @@ export default function PopularRecipe() {
                                 />
                             </div>
                             <div className={`${inter.className} flex flex-col gap-1`}>
-                                <h1 className={`${montserrat.className} text-lg md:text-2xl md:min-h-[70px] font-semibold`}>{food.name}</h1>
+                                <h1 className={`${montserrat.className} text-lg md:text-2xl md:min-h-[60px] font-semibold`}>{food.name}</h1>
                                 <div className="flex lg:items-center justify-between lg:flex-row flex-col text-xs">
                                     <div className="mb-5 lg:mb-0">
                                         <h1>Cook Time: {food.cook}</h1>
                                         <h1>Prep Time: {food.prep}</h1>
                                     </div>
-                                    <Button size='sm' showArrow>More Info</Button>
-                                    {/* <button className="hover:rounded-none transition-all duration-100 ease-in-out active:border p-1 sm:p-2 lg:px-3 lg:py-2 sm:text-lg lg:text-xl gap-1 bg-gradient-pink border border-b-4 border-r-4 border-black rounded-lg text-white">
-                                        More Info
-                                    </button> */}
+                                    <Button size='sm' className='whitespace-nowrap' showArrow>More Info</Button>
                                 </div>
                             </div>
                         </div>

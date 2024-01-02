@@ -55,14 +55,13 @@ export default function Home() {
       </section>
       <section className="flex lg:flex-row flex-col gap-1">
         <div className="rounded-md w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
-          <div className="mx-auto text-sm flex flex-col justify-center gap-5">
-            <div className="flex gap-1 flex-col text-xl md:text-5xl">
-              <p>Discover Recipes</p>
-              <p className="font-bold">Around The World</p>
+          <div className="mx-auto text-sm flex flex-col justify-center">
+            <div className="flex gap-1 text-xl md:text-5xl">
+              <p>Discover Recipes <br className="hidden lg:flex "/> <span className="font-bold">Around The World</span></p>
             </div>
-            <div className="">
+            <div className="hidden md:block mt-5">
               <p className={`${inter.className} lg:text-2xl text-lg tracking-wide`}>
-                Discover a world of culinary delights at <br />
+                Discover a world of culinary delights at <br className="hidden lg:flex"/>
                 <span className="font-bold underline underline-offset-4 decoration-2">
                   RECIPE-BOX
                 </span>
@@ -70,9 +69,18 @@ export default function Home() {
                 experience with ease and flavor.
               </p>
             </div>
+            {/* <div className="w-2/3 md:-mt-10">
+              <Image 
+              src={'/images/Globe.png'}
+              alt=""
+              width={10000}
+              height={10000}
+              className="w-full"
+              />
+            </div> */}
           </div>
         </div>
-        <div className=" lg:w-2/3 p-5 rounded-md bg-gradient-pink">
+        <div className="lg:w-2/3 p-5 rounded-md bg-gradient-pink">
           <h1 className={`${montserrat.className} text-5xl`}>Popular Recipe</h1>
           <div className="flex py-10 justify-center">
             <PopularRecipe />
