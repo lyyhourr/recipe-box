@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import Menu from '@/components/Menu'
 import { bigShoulderText } from '@/font/font'
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import React, { use, useEffect, useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
@@ -25,11 +26,11 @@ const options = [
     "maxCholesterol",
 ];
 
-const initialData :FoodDataTypes ={
-    id:1,
-    title:'lol',
-    image:'asdf',
-    imageType:'png'
+const initialData: FoodDataTypes = {
+    id: 1,
+    title: 'lol',
+    image: 'asdf',
+    imageType: 'png'
 }
 
 export default function RecipesPage(props: RecipePageProps) {
@@ -60,21 +61,14 @@ export default function RecipesPage(props: RecipePageProps) {
                 ?
                 fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => {setFoodData(data)})
+                    .then((data) => { setFoodData(data) })
                 :
                 fetch(
                     `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => {setFoodData(data.results)});
+                    .then((data) => { setFoodData(data.results) });
         }
-        // else {
-        //     console.log("empty search input")
-        // }
     }
-
-    // useEffect(() => {
-    //     !foodData.length && console.log("search not found!!")
-    // }, [foodData])
 
     function handleSelectedOption(name: string) {
         setSelectedOption((prev) => (prev === name ? "" : name));
@@ -105,9 +99,12 @@ export default function RecipesPage(props: RecipePageProps) {
                             placeholder={selectedOption ? `Enter ${selectedOption} (0 - 100)` : 'Find foods recipes'}
                             onChange={(e) => setUserQuery(e.target.value)}
                         />
-                        <Button className=" mr-2" size="landscape" bgColor='white'
+                        <button
+                            className={cn(`py-1 px-3 sm:py-1 sm:px-4 lg:px-5  text-sm sm:text-lg gap-1  transition-all duration-150 ease-in-out rounded-md  border border-black border-r-4 border-b-4 `,
+                                userQuery.length ? "active:border cursor-pointer" : "cursor-not-allowed")}
+                            disabled={userQuery.length === 0}
                             onClick={QueryFood}
-                        >Search</Button>
+                        >Search</button>
                     </div>
                 </div>
 
@@ -152,9 +149,22 @@ export default function RecipesPage(props: RecipePageProps) {
                                     </div>
                                 ))}
                         </div>
-                        {
-                            foodData.length === 0 && (
-                                <div className='h-full flex items-center justify-center'>
+                        <div className='h-full flex items-center justify-center'>
+                            {
+                                foodData[0].image === "asdf" && (
+                                    <div>
+                                        <Image
+                                            src={"/images/vegan-recipe.png"}
+                                            width={100000}
+                                            height={100000}
+                                            className='w-[300px] h-[450px] bg-cover'
+                                            alt=''
+                                        />
+                                    </div>
+                                )
+                            }
+                            {
+                                foodData.length === 0 && (
                                     <div>
                                         <p className='text-center'>no food data</p>
                                         <Image
@@ -165,9 +175,9 @@ export default function RecipesPage(props: RecipePageProps) {
                                             className='w-[200px] h-[200px] bg-cover opacity-90 '
                                         />
                                     </div>
-                                </div>
-                            )
-                        }
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
