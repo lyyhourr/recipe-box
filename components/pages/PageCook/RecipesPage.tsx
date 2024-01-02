@@ -84,7 +84,6 @@ export default function RecipesPage(props: RecipePageProps) {
             <div
                 className={` flex lg:flex flex-col gap-1 w-full  rounded-lg  bg-gray-200 bg-food`}
             >
-
                 <div className="flex flex-col gap-1 mt-6">
                     <div className="flex w-[95%] mx-auto items-center justify-between mb-4 rounded-lg">
                         <Button

@@ -48,32 +48,32 @@ export default function CookPage() {
         setRemoveAllOpen(false)
     }
 
-    function handleSelectedIngredients(name: string, index: number) {
-        const isSelected = allIngredients[index].selected.includes(name);
-        setAllIngredients((prev) =>
-            prev.map((item: Ingredient, i) =>
-                i === index
-                    ? {
-                        ...item,
-                        selected: isSelected
-                            ? item.selected.filter((select) => select !== name)
-                            : [...item.selected, name],
-                    }
-                    : item
-            )
-        );
-    }
+    // function handleSelectedIngredients(name: string, index: number) {
+    //     const isSelected = allIngredients[index].selected.includes(name);
+    //     setAllIngredients((prev) =>
+    //         prev.map((item: Ingredient, i) =>
+    //             i === index
+    //                 ? {
+    //                     ...item,
+    //                     selected: isSelected
+    //                         ? item.selected.filter((select) => select !== name)
+    //                         : [...item.selected, name],
+    //                 }
+    //                 : item
+    //         )
+    //     );
+    // }
 
-//     function handleSelectedIngredients(name: string) {
-//         setAllIngredients(prev => (
-//             prev.map(category=>(
-//                 {
-//                     ...category,
-//                     selected: category.data.ma=== name ?[...category.selected,name]
-//                 }
-//             ))
-//         ))
-// }
+    function handleSelectedIngredients(name: string) {
+        setAllIngredients(prev => (
+            prev.map(category=>(
+                {
+                    ...category,
+                    selected: category.data.includes(name) ? [...category.selected,name] : category.selected
+                }
+            ))
+        ))
+}
 
 function handleRemoveIngredient(name: string, index: number) {
     setAllIngredients(prev => (
@@ -154,9 +154,9 @@ return (
                             item.toLowerCase().includes(searchValue.toLowerCase()) &&
                             <div className="text-black rounded-lg hover:bg-gray-100 py-2 w-full" key={i}>
                                 <button
-                                    onClick={() => {}}
+                                    onClick={() => handleSelectedIngredients(item)}
                                     className={cn(`text-start w-full px-2 bg-transparent`,
-                                        { 'text-green-500': searchData.includes(item) })}
+                                        { 'text-green-500': allIngredients.map(category=>category.selected.includes(item))})}
                                 >
                                     {item}
                                 </button>
