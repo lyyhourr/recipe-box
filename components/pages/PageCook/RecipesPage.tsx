@@ -1,6 +1,6 @@
 import Button from '@/components/Button'
 import Menu from '@/components/Menu'
-import { bigShoulderText } from '@/font/font'
+import { bigShoulderText, montserrat } from '@/font/font'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import React, { use, useEffect, useState } from 'react'
@@ -35,6 +35,12 @@ const initialData: FoodDataTypes = {
     image: 'asdf',
     imageType: 'png'
 }
+const initialData2: FoodDataTypes = {
+    id: 1,
+    title: 'lol',
+    image: 'bsdf',
+    imageType: 'png'
+}
 
 export default function RecipesPage(props: RecipePageProps) {
     const [selectedOption, setSelectedOption] = useState("");
@@ -59,10 +65,10 @@ export default function RecipesPage(props: RecipePageProps) {
 
     useEffect(() => {
         props.isSubmit &&
-        props.selectedIngredient.length &&
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${props.selectedIngredient.toString().toLowerCase()}`)
-            .then((res) => res.json())
-            .then((data) => { setFoodData(data) });
+            props.selectedIngredient.length &&
+            fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${props.selectedIngredient.toString().toLowerCase()}`)
+                .then((res) => res.json())
+                .then((data) => { setFoodData(data) });
 
         props.setIsSubmit(false)
     })
@@ -73,17 +79,14 @@ export default function RecipesPage(props: RecipePageProps) {
                 ?
                 fetch(`https://api.spoonacular.com/recipes/findByNutrients?apiKey=3c374c59b2e74325892f07406d6c7793&${selectedOption}=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => { data.length > 0 ? setFoodData(data) : setFoodData([{
-                        id: 1,
-                        title: 'lol',
-                        image: 'bsdf',
-                        imageType: 'png'
-                    }]) })
+                    .then((data) => {
+                        data.length > 0 ? setFoodData(data) : setFoodData([initialData2])
+                    })
                 :
                 fetch(
                     `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => { data.results.length > 0 && setFoodData(data.results)});
+                    .then((data) => { data.results.length > 0 && setFoodData(data.results) });
         }
 
     }
@@ -127,7 +130,7 @@ export default function RecipesPage(props: RecipePageProps) {
                 </div>
 
                 <div className="flex px-3 lg:px-0 gap-3 items-center ">
-                    <Button className="  lg:hidden pt-1" bgColor='white' size="landscape" showArrow={!showOptions} onClick={() => setShowOptions(p => !p)}>{showOptions ? "Close" : "Filter"}</Button>
+                    <Button className="  lg:hidden my-2 " bgColor='white' size="landscape" showArrow={!showOptions} onClick={() => setShowOptions(p => !p)}>{showOptions ? "Close" : "Filter"}</Button>
                     <div className={`flex lg:hidden gap-1 overflow-auto ${showOptions ? " translate-x-0" : " translate-x-[-200%]"}`}>
                         {optionButtons}
                     </div>
@@ -169,7 +172,7 @@ export default function RecipesPage(props: RecipePageProps) {
                         </div>
                         <div className='h-full flex items-center justify-center'>
                             {
-                                foodData[0].image === 'bsdf'  && (
+                                foodData[0].image === 'bsdf' && (
                                     <div>
                                         <p className='text-center'>no food data</p>
                                         <Image
@@ -183,8 +186,17 @@ export default function RecipesPage(props: RecipePageProps) {
                                 )
                             }
                             {
-                                foodData[0].image==="asdf"&&(
-                                    <div className="">sdfa</div>
+                                foodData[0].image === "asdf" && (
+                                    <div className='flex items-center justify-normal flex-col gap-5 '>
+                                        <p className={`text-center text-lg lg:text-2xl ${montserrat.className}`}>Select your ingredients or search recipes</p>
+                                        <Image
+                                            src={"/images/eating-noodle.png"}
+                                            width={100000}
+                                            height={10000}
+                                            alt='food image'
+                                            className='w-[350px] h-[300px] lg:w-[500px] lg:h-[400px]'
+                                        />
+                                    </div>
                                 )
                             }
                         </div>
