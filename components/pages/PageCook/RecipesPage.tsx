@@ -7,8 +7,8 @@ import React, { use, useEffect, useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
     setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedIngredient:string[]
-    isSubmit : boolean
+    selectedIngredient: string[]
+    isSubmit: boolean
     setIsSubmit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface FoodDataTypes {
@@ -40,9 +40,9 @@ export default function RecipesPage(props: RecipePageProps) {
     const [selectedOption, setSelectedOption] = useState("");
     const [showOptions, setShowOptions] = useState(false)
     const [foodData, setFoodData] = useState<FoodDataTypes[]>([initialData]);
-    const [userQuery, setUserQuery] = useState("");
+    const [userQuery, setUserQuery] = useState<any>("");
 
-
+    const [data, setData] = useState([])
     const optionButtons = options.slice(0, 6).map((opt, i) => (
         <div key={i}>
             <Button
@@ -57,6 +57,19 @@ export default function RecipesPage(props: RecipePageProps) {
             </Button>
         </div>
     ))
+    useEffect(() => {
+        const selectedIngreds = ["bread", "ham", "egg", "hotdog"];
+        props.isSubmit &&
+            fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${selectedIngreds.toString().toLowerCase()}`)
+                .then((res) => res.json())
+                .then((data) => { setFoodData(data) });
+        // props.selectedIngredient.length &&
+        // fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3c374c59b2e74325892f07406d6c7793&ingredients=${props.selectedIngredient.toString().toLowerCase()}`)
+        //     .then((res) => res.json())
+        //     .then((data) => { setFoodData(data) });
+
+        props.setIsSubmit(false)
+    }, [props.isSubmit])
 
     function QueryFood() {
         if (userQuery.length) {
@@ -71,6 +84,7 @@ export default function RecipesPage(props: RecipePageProps) {
                     .then((res) => res.json())
                     .then((data) => { setFoodData(data.results) });
         }
+
     }
 
     function handleSelectedOption(name: string) {
@@ -121,7 +135,7 @@ export default function RecipesPage(props: RecipePageProps) {
                     {optionButtons}
                 </div>
                 <div className={`h-full w-full bg-white  p-2 rounded-b-lg rounded-t-2xl overflow-auto  lg:block`}>
-                    <div className='h-full overflow-auto'>
+                    <div className='h-fit overflow-auto'>
                         <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 p-3   rounded-xl gap-2 lg:gap-5">
                             {foodData.length > 1 &&
                                 foodData.map((food, i) => (
@@ -153,19 +167,6 @@ export default function RecipesPage(props: RecipePageProps) {
                                 ))}
                         </div>
                         <div className='h-full flex items-center justify-center'>
-                            {
-                                foodData[0].image === "asdf" && (
-                                    <div>
-                                        <Image
-                                            src={"/images/vegan-recipe.png"}
-                                            width={100000}
-                                            height={100000}
-                                            className='w-[300px] h-[450px] bg-cover'
-                                            alt=''
-                                        />
-                                    </div>
-                                )
-                            }
                             {
                                 foodData.length === 0 && (
                                     <div>
