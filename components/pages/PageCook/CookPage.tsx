@@ -10,6 +10,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { Box, Trash } from "lucide-react";
 import RecipesPage from "./RecipesPage";
+import { bigShoulderText } from "@/font/font";
 
 const MemoRecipePage = React.memo(RecipesPage)
 
@@ -91,31 +92,22 @@ function handleRemoveIngredient(name: string, index: number) {
 return (
     <main className="flex justify-center h-screen bg-black p-1 gap-1">
         <div
-            className={` flex lg:flex flex-col gap-1 w-full lg:w-1/2 rounded-lg  bg-gradient-pink
+            className={` flex lg:flex flex-col gap-1  w-full lg:w-1/2 rounded-lg  bg-gradient-pink
         ${switchSearch ? "block" : "hidden"}
         `}
         >
-            <div className="m-2 p-2 flex flex-col gap-3">
-                <div className="flex items-center justify-between lg:justify-between  rounded-lg">
+            <div className="m-2 p-2 px-2 flex flex-col gap-3">
+                <div className="flex items-center pt-2 justify-between rounded-lg">
                     <Link href={"/"} className="">
                         <Button bgColor="white">Home</Button>
                     </Link>
-                    <div className="flex justify-center cursor-pointer  items-center w-[170px]">
-                        <Image
-                            src={"/icons/ingredients-icon.png"}
-                            width={10000}
-                            height={10000}
-                            className="w-[90px] h-[90px]"
-                            alt="main logo"
-                        />
-                        <p className="text-xl uppercase text-white ">Ingredients</p>
-                    </div>
+                    <p className={`${bigShoulderText.className} uppercase text-5xl tracking-wide text-white`}>Ingredients</p>
                     <div className="lg:hidden">
                         <Menu />
                     </div>
                     <div className="hidden lg:block"></div>
                 </div>
-                <div className="bg-white relative w-full flex pl-4 py-2 items-center gap-2  rounded-lg ">
+                <div className="bg-white lg:mt-6 relative w-full flex pl-4 py-2 items-center gap-2  rounded-lg ">
                     <IoSearch className="w-7 h-7 text-gray-500" />
                     <input
                         type="text"
@@ -150,7 +142,7 @@ return (
                         ))}
                     </div>
                 </div>
-                <div className="flex flex-row-reverse justify-between">
+                <div className="flex mt-2 flex-row-reverse justify-between">
                     <Button
                         className="bg-white text-black w-fit"
                         bgColor="white"
@@ -192,7 +184,7 @@ return (
                     isViewSelectedPage
                         ?
                         <div className="flex p-2 flex-col gap-4">
-                            <h1 className="text-xl">Your Selected Ingredients : </h1>
+                            <h1 className="text-xl">Selected Ingredients : </h1>
                             {
                                 allIngredients.map((category, index) => (
                                     category.selected.map((ingre, i) => (

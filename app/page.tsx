@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <main className="flex p-1 h-full sm:p-2  lg:p-3 bg-[#000] flex-col gap-1">
       <Navbar />
-      <section className="flex flex-col h-full sm:flex-row gap-1">
-        <div className="bg-gray-200 py-5 w-full justify-between rounded-md flex flex-col bgre">
+      <section className="flex flex-col h-full lg:flex-row gap-1">
+        <div className="bg-gray-200 py-5 w-full relative justify-between rounded-md flex flex-col">
           <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start border-2 ">
             <p className={`${montserrat.className} ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start`}>
               We Help You Find{" "}
@@ -42,8 +42,15 @@ export default function Home() {
               </Button>
             </Link>
           </div>
+          {/* <Image
+          alt=""
+          src={'/images/'}
+          width={10000}
+          height={10000}
+          className="absolute z-0 w-[150px] md:w-[150px] bottom-0 right-10"
+          /> */}
         </div>
-        <div className="bg-gradient-blue rounded-md py-2 px-3 ">
+        <div className="bg-gradient-blue hidden lg:block rounded-md py-2 px-3 ">
           <Image
             src={"/images/hero-chef.png"}
             width={500}
@@ -54,7 +61,7 @@ export default function Home() {
         </div>
       </section>
       <section className="flex lg:flex-row flex-col gap-1">
-        <div className="rounded-md w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
+        <div className="rounded-md relative w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
           <div className="mx-auto text-sm flex flex-col justify-center">
             <div className="flex gap-1 text-xl md:text-5xl">
               <p>Discover Recipes <br className="hidden lg:flex "/> <span className="font-bold">Around The World</span></p>
@@ -80,11 +87,25 @@ export default function Home() {
             </div> */}
           </div>
         </div>
-        <div className="lg:w-2/3 p-5 rounded-md bg-gradient-pink">
-          <h1 className={`${montserrat.className} text-5xl`}>Popular Recipe</h1>
+        <div className="lg:w-2/3 p-5 rounded-md relative bg-gradient-pink">
+          <h1 className={`${montserrat.className} text-white tracking-tighter text-5xl`}>Popular Recipe</h1>
           <div className="flex py-10 justify-center">
             <PopularRecipe />
           </div>
+          <Image
+          src={'/images/Star Purple.png'}
+          alt=""
+          width={80}
+          height={80}
+          className="absolute top-8 right-0 md:right-10"
+          />
+          <Image
+          src={'/images/cat-chef.png'}
+          alt=""
+          width={200}
+          height={10000}
+          className=" hidden md:block absolute bottom-0 left-0"
+          />
         </div>
       </section>
       <Footer />
