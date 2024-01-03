@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { montserrat } from '@/font/font'
+import { bigShoulderText, montserrat, roboto } from '@/font/font'
 
 export default function Footer() {
   return (
@@ -15,19 +15,19 @@ export default function Footer() {
             height={100}
             className=''
           />
-          <h1 className='text-2xl font-bold'>recipe-box</h1>
+          <h1 className={`${roboto.className} text-xl lg:text-2xl uppercase`}>recipe-box</h1>
         </div>
 
-        <div className='grid grid-cols-2 sm:gap-5 lg:gap-20 lg:grid-cols-3'>
+        <div className={`${montserrat.className} grid grid-cols-2 sm:gap-5 lg:gap-20 lg:grid-cols-3`}>
           <div className='flex flex-col md:gap-4'>
-            <h1 className='font-semibold text-xl'>About Us</h1>
+            <h1 className={`${roboto.className} font-semibold text-xl`}>About Us</h1>
             <div className='md:text-lg text-sm text-gray-500'>
               <h4>Cambodian</h4>
               <h4>Students</h4>
             </div>
           </div>
           <div className='flex flex-col md:gap-4'>
-            <h1 className='font-semibold text-xl'>Contact Us</h1>
+            <h1 className={`${roboto.className} font-semibold text-xl`}>Contact Us</h1>
             <div className='md:text-lg text-sm text-gray-500'>
               <h4>moniboreyc@gmail.com</h4>
               <h4>mamlyhua@gmail.com</h4>
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
       </section >
       <section className='flex flex-col sm:flex-row gap-5 sm:gap-[100px] p-5 lg:items-center lg:justify-center w-full'>
-        <p className={`${montserrat.className} text-2xl`}>Donate us</p>
+        <p className={`${roboto.className} text-3xl`}>Donate us</p>
         <div className='flex  '>
           <div className='flex flex-col sm:flex-row gap-6  '>
             <div className='flex gap-2 items-center'>
