@@ -12,8 +12,8 @@ export default function Home() {
     <main className="flex p-1 h-full sm:p-2  lg:p-3 bg-[#000] flex-col gap-1">
       <Navbar />
       <section className="flex flex-col h-full lg:flex-row gap-1">
-        <div className="bg-gray-200 py-5 w-full relative justify-between rounded-md flex flex-col">
-          <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start border-2 ">
+        <div className="bg-gray-200  py-5 w-full bg-cover relative justify-between rounded-md flex flex-col max-md:bg-[url('/images/hero-bg.jpg')]">
+          <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start  ">
             <p className={`${montserrat.className} ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start`}>
               We Help You Find{" "}
               <span className="leading-tight">
@@ -43,11 +43,14 @@ export default function Home() {
             </Link>
           </div>
           {/* <Image
-          alt=""
-          src={'/images/'}
-          width={10000}
-          height={10000}
-          className="absolute z-0 w-[150px] md:w-[150px] bottom-0 right-10"
+            alt=""
+            // src={'/images/cambodian-chef.png'}
+            // src={'/images/family-eating.png'}
+            src={'/images/equipment.png'}
+            // src={'/images/cartoon-eating.png'}
+            width={10000}
+            height={10000}
+            className="absolute z-0 w-[450px] h-[450px] bottom-10 right-10 heroImg"
           /> */}
         </div>
         <div className="bg-gradient-blue hidden lg:block rounded-md py-2 px-3 ">
@@ -60,15 +63,15 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="flex lg:flex-row flex-col gap-1">
-        <div className="rounded-md relative w-full p-5 lg:w-[1000px] bg-gradient-blue flex justify-center ">
+      <section className="flex lg:flex-row flex-col gap-1 relative">
+        <div className="rounded-md relative w-full p-5 lg:w-[1000px] text-white bg-gradient-blue flex justify-center bg-[url('/images/cosmic-earth.jpg')] bg-fixed">
           <div className="mx-auto text-sm flex flex-col justify-center">
             <div className="flex gap-1 text-xl md:text-5xl">
-              <p>Discover Recipes <br className="hidden lg:flex "/> <span className="font-bold">Around The World</span></p>
+              <p>Discover Recipes <br className="hidden lg:flex " /> <span className="font-bold">Around The World</span></p>
             </div>
-            <div className="hidden md:block mt-5">
+            <div className="mt-5">
               <p className={`${inter.className} lg:text-2xl text-lg tracking-wide`}>
-                Discover a world of culinary delights at <br className="hidden lg:flex"/>
+                Discover a world of culinary delights at <br className="hidden lg:flex" />
                 <span className="font-bold underline underline-offset-4 decoration-2">
                   RECIPE-BOX
                 </span>
@@ -76,6 +79,27 @@ export default function Home() {
                 experience with ease and flavor.
               </p>
             </div>
+            {/* <Image
+              src={"/images/Globe.png"}
+              width={10000}
+              height={10000}
+              alt=""
+              className="w-[200px] h-[200px] absolute top-0 left-1"
+            />
+            <Image
+              src={"/images/meditate.png"}
+              width={10000}
+              height={10000}
+              alt=""
+              className="w-[150px] h-[150px] absolute bottom-0 right-1"
+            />
+            <Image
+              src={"/images/man.png"}
+              width={10000}
+              height={10000}
+              alt=""
+              className="w-[120px] h-[70px] absolute bottom-0 left-1"
+            /> */}
             {/* <div className="w-2/3 md:-mt-10">
               <Image 
               src={'/images/Globe.png'}
@@ -87,24 +111,24 @@ export default function Home() {
             </div> */}
           </div>
         </div>
-        <div className="lg:w-2/3 p-5 rounded-md relative bg-gradient-pink">
+        <div className="lg:w-2/3 p-5 rounded-md relative bg-cover   bg-[url('/images/hero-bg.jpg')]">
           <h1 className={`${montserrat.className} text-white tracking-tighter text-5xl`}>Popular Recipe</h1>
           <div className="flex py-10 justify-center">
             <PopularRecipe />
           </div>
           <Image
-          src={'/images/Star Purple.png'}
-          alt=""
-          width={80}
-          height={80}
-          className="absolute top-8 right-0 md:right-10"
+            src={'/images/Star Purple.png'}
+            alt=""
+            width={80}
+            height={80}
+            className="absolute top-8 right-0 md:right-10"
           />
           <Image
-          src={'/images/cat-chef.png'}
-          alt=""
-          width={200}
-          height={10000}
-          className=" hidden md:block absolute bottom-0 left-0"
+            src={'/images/cat-chef.png'}
+            alt=""
+            width={200}
+            height={10000}
+            className=" hidden md:block absolute bottom-0 left-0"
           />
         </div>
       </section>

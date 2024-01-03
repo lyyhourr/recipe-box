@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 type ButtonPropsTypes = {
   children: React.ReactNode;
-  size?: "xs" | "sm" | "md" | "lg" | "xl" | "landscape";
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "landscape" | "small landscape";
   bgColor?: "gradient-blue" | "white" | string;
   radius?: "sm" | "md" | "lg" | "xl" | "full";
   showArrow?: boolean;
@@ -28,6 +28,7 @@ export default function Button(props: ButtonPropsTypes) {
         props.size === "lg" && "p-2 sm:px-4 sm:py-3 lg:px-6 lg:py-4 text-xl sm:text-2xl lg:text-3xl gap-1 sm:gap-3",
         props.size === "xl" && "px-3 py-2 sm:px-4 sm:py-3 lg:px-7 lg:py-7 text-xl sm:text-3xl lg:text-5xl gap-2 md:gap-4",
         props.size === "landscape" && "py-1 px-3 sm:py-1 sm:px-4 lg:px-5  text-sm sm:text-lg gap-1",
+        props.size === "small landscape" && "py-0 px-2 sm:px-2  text-sm  gap-1",
         props.showArrow && "flex items-center justify-center",
         props.bgColor === "gradient-blue" ? "bg-gradient-blue" : `bg-${props.bgColor}`,
         !props.bgColor && "bg-gradient-pink",
