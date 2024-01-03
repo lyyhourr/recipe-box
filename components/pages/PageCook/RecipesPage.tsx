@@ -3,6 +3,7 @@ import Menu from '@/components/Menu'
 import { bigShoulderText, montserrat } from '@/font/font'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { use, useEffect, useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
@@ -86,7 +87,7 @@ export default function RecipesPage(props: RecipePageProps) {
                 fetch(
                     `https://api.spoonacular.com/recipes/complexSearch?apiKey=3c374c59b2e74325892f07406d6c7793&query=${userQuery}`)
                     .then((res) => res.json())
-                    .then((data) => { data.results.length > 0 && setFoodData(data.results) });
+                    .then((data) => { data.results.length > 0 ? setFoodData(data.results) : setFoodData([initialData2]) });
         }
 
     }
@@ -162,9 +163,9 @@ export default function RecipesPage(props: RecipePageProps) {
                                                 <p className="text-gray-500 text-sm">ingred</p>
                                             </div>
                                             <div className="flex justify-end">
-                                                <button className=" transition-all duration-100 ease-in-out text-green-500 px-1 hover:translate-x-1">
+                                                <Link href={`/${food.id}`} className=" transition-all duration-100 ease-in-out text-green-500 px-1 hover:translate-x-1">
                                                     View Detail {`>`}
-                                                </button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
