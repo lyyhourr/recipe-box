@@ -14,8 +14,17 @@ const FetchFood = async (id: any) => {
         console.log(e)
     }
 }
+const FetchSimilarRecipe = async (id: any) => {
+    try {
+        const res = await fetch(`https://api.spoonacular.com/recipes/${id}/similar?apiKey=3c374c59b2e74325892f07406d6c7793`)
+        return res.json();
+    } catch (e) {
+        console.log(e)
+    }
+}
 export default async function page({ params }: { params: { recipeId: any } }) {
     const foods = await FetchFood(params.recipeId);
+    const similarRecipes = await FetchSimilarRecipe(params.recipeId)
 
     return (
 
