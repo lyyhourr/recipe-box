@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
       </section >
-      <section className='flex flex-col sm:flex-row gap-5 sm:gap-[100px] p-5 lg:items-center lg:justify-center w-full'>
+      <section className='flex flex-col sm:flex-row gap-5 sm:gap-[100px] p-5 sm:items-center sm:justify-center w-full'>
         <p className={`${roboto.className} text-3xl`}>Donate Us</p>
         <div className='flex  '>
           <div className='flex flex-col sm:flex-row gap-6  '>
@@ -74,25 +74,20 @@ export default function Footer() {
                 <div className='flex flex-col gap-1'>
                   <div className='flex gap-5 items-center'>
                     <p>002 560 314 </p>
-                    {/* <Button size='small landscape' bgColor='white' onClick={() => handleCopy("002560314")}>Copy</Button> */}
-
                   </div>
                   <div className='flex gap-2 items-center'>
                     <p>002 560 314 </p>
-                    {/* <Button size='small landscape' bgColor='white' onClick={() => handleCopy("002560314")}>Copy</Button> */}
                   </div>
                 </div>
               </div>
-
+              <Image
+                src={"/images/crying-cartoon.png"}
+                width={10000}
+                height={10000}
+                alt='crying-cat'
+                className='w-[130px] h-[100px] sm:w-[165px] sm:h-[130px] bg-cover'
+              />
             </div>
-
-            <Image
-              src={"/images/crying-cartoon.png"}
-              width={10000}
-              height={10000}
-              alt='crying-cat'
-              className='w-[165px] h-[120px] bg-cover'
-            />
           </div>
         </div>
 
