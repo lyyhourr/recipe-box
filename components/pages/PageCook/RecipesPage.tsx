@@ -4,7 +4,7 @@ import { bigShoulderText, montserrat } from '@/font/font'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoSearch } from 'react-icons/io5'
 interface RecipePageProps {
     setSwitchSearch: React.Dispatch<React.SetStateAction<boolean>>;

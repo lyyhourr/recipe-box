@@ -2,14 +2,16 @@ import Image from 'next/image'
 import React from 'react'
 import Button from './Button'
 import { inter, montserrat } from '@/font/font'
+import Link from 'next/link'
 
-interface FoodCardProps{
-    img:string
-    name:string
-    cook:string
+interface FoodCardProps {
+    img: string
+    name: string
+    cook: string
+    id: number
 }
 
-export default function FoodCard(props:FoodCardProps) {
+export default function FoodCard(props: FoodCardProps) {
     return (
         <div className='border-2 border-black rounded-lg border-r-4 border-b-4 bg-white p-2'>
             <div className='h-[200px] xl:h-[250px]'>
@@ -27,7 +29,9 @@ export default function FoodCard(props:FoodCardProps) {
                     <div className="my-5 text-start lg:mb-0">
                         <h1 className='lg:text-lg text-gray-500'>Cook Time: <span className='text-green-500'>{props.cook}mn</span></h1>
                     </div>
-                    <Button size='xs' className='whitespace-nowrap' showArrow>More Info</Button>
+                    <Link href={`/detail/${props.id}`}>
+                        <Button size='xs' className='whitespace-nowrap' showArrow>More Info</Button>
+                    </Link>
                 </div>
             </div>
         </div>

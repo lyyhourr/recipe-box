@@ -18,9 +18,9 @@ export default function YouMayLike({ similarRecipes }: YouMayLikeProps) {
 
     const setSlidesPerview = () => {
         setSlides(
-            window.innerWidth <= 640 ? 1 : 
-            window.innerWidth <= 1024 ? 2 :
-            window.innerWidth <= 1280 ? 3 : 4 
+            window.innerWidth <= 640 ? 1 :
+                window.innerWidth <= 1024 ? 2 :
+                    window.innerWidth <= 1280 ? 3 : 4
         );
     }
 
@@ -38,11 +38,11 @@ export default function YouMayLike({ similarRecipes }: YouMayLikeProps) {
             <div className='relative w-fit'>
                 <h1 className='underline underline-offset-4 text-4xl text-start text-black'>You May Also Like</h1>
                 <Image
-                alt=''
-                src={'/images/textstyle/Group 2824.png'}
-                width={30}
-                height={30}
-                className='absolute -top-1 -right-5'
+                    alt=''
+                    src={'/images/textstyle/Group 2824.png'}
+                    width={30}
+                    height={30}
+                    className='absolute -top-1 -right-5'
                 />
             </div>
             <div className='flex justify-center py-10'>
@@ -59,6 +59,7 @@ export default function YouMayLike({ similarRecipes }: YouMayLikeProps) {
                                 img={`https://spoonacular.com/recipeImages/${recipe.id}-312x231.${recipe.imageType}`}
                                 name={recipe.title}
                                 cook={recipe.readyInMinutes}
+                                id={recipe.id}
                             />
                         </SwiperSlide>
                     ))}
