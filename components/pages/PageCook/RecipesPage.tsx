@@ -163,7 +163,7 @@ export default function RecipesPage(props: RecipePageProps) {
                                                 <p className="text-gray-500 text-sm">ingred</p>
                                             </div>
                                             <div className="flex justify-end">
-                                                <Link href={`/detail/${food.id}`} className=" transition-all duration-100 ease-in-out text-green-500 px-1 hover:translate-x-1">
+                                                <Link href={`/detail/${food.id}`} className=" transition-all duration-100 ease-in-out text-green-500 px-2 hover:translate-x-1">
                                                     View Detail {`>`}
                                                 </Link>
                                             </div>

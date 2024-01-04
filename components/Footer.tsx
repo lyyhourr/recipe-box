@@ -7,7 +7,7 @@ export default function Footer() {
     <div className='w-full h-full bg-white py-10 rounded-lg mb-1'>
 
       <section className=' lg:items-center lg:justify-evenly lg:mb-10 lg:flex-row flex-col flex gap-10 px-5  pb-3 ' >
-        <div className='flex flex-col lg:items-center justify-center'>
+        <div className='flex flex-col lg:items-center lg:justify-center'>
           <Image
             src={'/logos/main-logo.png'}
             alt=''
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
       </section >
       <section className='flex flex-col sm:flex-row gap-5 sm:gap-[100px] p-5 lg:items-center lg:justify-center w-full'>
-        <p className={`${roboto.className} text-3xl`}>Donate us</p>
+        <p className={`${roboto.className} text-3xl`}>Donate Us</p>
         <div className='flex  '>
           <div className='flex flex-col sm:flex-row gap-6  '>
             <div className='flex gap-2 items-center'>

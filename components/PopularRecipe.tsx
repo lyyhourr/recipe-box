@@ -11,27 +11,27 @@ import FoodCard from './FoodCard';
 const PopularFoods = [{
     name: 'Spicy beef and bean nachos',
     img: '/images/popular/spicy-beef-and-bean-nachos-106528-1.jpeg',
-    cook: '25mn',
+    cook: '25',
 },
 {
     name: 'Shanghai dumplings',
     img: '/images/popular/shanghai-dumplings-86004-1.jpeg',
-    cook: '15mn',
+    cook: '15',
 },
 {
     name: 'Coq au Vin',
     img: '/images/popular/coq-au-vin-107504-1.jpeg',
-    cook: '1h 25mn',
+    cook: '1h 25',
 },
 {
     name: 'Chicken pad Thai',
     img: '/images/popular/chicken-pad-thai-94082-1.jpeg',
-    cook: '10mn',
+    cook: '10',
 },
 {
     name: 'Beef and spinach gozleme',
     img: '/images/popular/beef-and-spinach-gozleme-105596-1.jpeg',
-    cook: '20mn',
+    cook: '20',
 },
 ]
 
