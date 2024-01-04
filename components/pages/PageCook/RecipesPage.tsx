@@ -49,6 +49,8 @@ export default function RecipesPage(props: RecipePageProps) {
     const [foodData, setFoodData] = useState<FoodDataTypes[]>([initialData]);
     const [userQuery, setUserQuery] = useState<any>("");
 
+    console.log('render')
+
     const optionButtons = options.slice(0, 6).map((opt, i) => (
         <div key={i}>
             <Button
@@ -118,7 +120,7 @@ export default function RecipesPage(props: RecipePageProps) {
                         <input
                             type={selectedOption ? "number" : "text"}
                             className="outline-none py-2 text-lg w-[95%]"
-                            placeholder={selectedOption ? `Enter ${selectedOption} (0 - 100)` : 'Find foods recipes'}
+                            placeholder={selectedOption ? `Enter ${selectedOption} (0 - 100)` : 'Search Foods Recipes'}
                             onChange={(e) => setUserQuery(e.target.value)}
                         />
                         <button

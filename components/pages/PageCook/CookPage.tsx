@@ -144,11 +144,11 @@ return (
                 </div>
                 <div className="flex mt-2 flex-row-reverse justify-between">
                     <Button
-                        className="bg-white text-black w-fit"
+                        className={cn("bg-white text-black w-fit",{"scale-75 -z-10 opacity-0":selectedIngredient.length===0})}
                         bgColor="white"
-                        onClick={() => {setSwitchSearch(false);setIsSubmit(true)}}
+                        onClick={() => {setSwitchSearch(false); selectedIngredient.length > 0 && setIsSubmit(true)}}
                     >
-                        View Recipes
+                        View Recipe
                     </Button>
                     <div className="flex items-center gap-1">
                         <button
@@ -164,10 +164,10 @@ return (
                             }
 
                         </button>
-                        {selectedIngredient.length > 0 && <button
+                        {<button
                             onClick={() => setRemoveAllOpen(true)}
                             className={cn('text-black relative rounded-lg transition-all text-center duration-150 ease-in-out py-2 px-3 bg-white',
-                                { 'hidden': isRemoveAllOpen })}>
+                                { '-z-10 opacity-0 scale-75 translate-x-[-50%]': selectedIngredient.length === 0})}>
                             Remove All
                         </button>}
                         <div className={cn('hidden gap-1 items-center', isRemoveAllOpen && 'flex')}>

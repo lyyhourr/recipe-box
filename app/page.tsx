@@ -9,14 +9,14 @@ import { inter, lato, montserrat } from "@/font/font";
 
 export default function Home() {
   return (
-    <main className="flex p-1 h-full sm:p-2  lg:p-3 bg-[#000] flex-col gap-1">
+    <main className="flex p-1 h-full sm:p-2 lg:p-3 bg-black flex-col gap-1">
       <Navbar />
       <section className="flex flex-col h-full lg:flex-row gap-1">
-        <div className="bg-gray-200  py-5 w-full bg-cover relative justify-between rounded-md flex flex-col max-md:bg-[url('/images/hero-bg.jpg')]">
-          <div className="w-full h-[120px] md:h-[300px] flex sm:justify-start  ">
-            <p className={`${montserrat.className} ml-2 md:ml-5 text-4xl sm:text-5xl  xl:text-7xl  sm:text-start`}>
+        <div className="bg-white py-5 w-full bg-cover relative justify-between rounded-md flex flex-col bg-[url('/images/hero-bg.jpg')]">
+          <div className="w-full h-[120px] md:h-[350px] flex sm:justify-start  ">
+            <p className={`${montserrat.className} ml-2 md:ml-5 text-white text-4xl sm:text-5xl  xl:text-7xl  sm:text-start`}>
               We Help You Find{" "}
-              <span className="leading-tight">
+              <span className="leading-tight text-white">
                 <AnimationText
                   texts={[
                     "New Food",
@@ -111,7 +111,8 @@ export default function Home() {
             </div> */}
           </div>
         </div>
-        <div className="lg:w-2/3 p-5 rounded-md relative bg-cover   bg-[url('/images/hero-bg.jpg')]">
+        {/* bg-[url('/images/hero-bg.jpg')] */}
+        <div className="lg:w-2/3 p-5 rounded-md relative bg-cover bg-white   ">
           <h1 className={`${montserrat.className} text-white tracking-tighter text-5xl`}>Popular Recipe</h1>
           <div className="flex py-10 justify-center">
             <PopularRecipe />
