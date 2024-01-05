@@ -9,33 +9,33 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import FoodCard from './FoodCard';
 
 const PopularFoods = [{
-    id: 1234,
-    name: 'Spicy beef and bean nachos',
-    img: '/images/popular/spicy-beef-and-bean-nachos-106528-1.jpeg',
+    id: 633352,
+    name: 'Bacon Wrapped Tofu Tacos',
+    img: '/images/popular/bacon-wrapped-tacos.jpg',
     cook: '25',
 },
 {
-    id: 1234,
-    name: 'Shanghai dumplings',
-    img: '/images/popular/shanghai-dumplings-86004-1.jpeg',
+    id: 641687,
+    name: 'Dry Mee Siam',
+    img: '/images/popular/dry-mee-siam.jpg',
     cook: '15',
 },
 {
-    id: 1234,
-    name: 'Coq au Vin',
-    img: '/images/popular/coq-au-vin-107504-1.jpeg',
+    id: 661126,
+    name: 'Spicy Lump Crab and Avocado Salad',
+    img: '/images/popular/spicy-lamb.jpg',
     cook: '1h 25',
 },
 {
-    id: 1234,
-    name: 'Chicken pad Thai',
-    img: '/images/popular/chicken-pad-thai-94082-1.jpeg',
+    id: 665537,
+    name: 'Yoghurt Honey Madeleine',
+    img: '/images/popular/yoghurt.jpg',
     cook: '10',
 },
 {
-    id: 1234,
-    name: 'Beef and spinach gozleme',
-    img: '/images/popular/beef-and-spinach-gozleme-105596-1.jpeg',
+    id: 638235,
+    name: 'Chicken Parmesan With Pasta',
+    img: '/images/popular/chicken-pasta.jpg',
     cook: '20',
 },
 ]
@@ -43,7 +43,6 @@ const PopularFoods = [{
 export default function PopularRecipe() {
 
     const [slides, setSlides] = useState(1)
-    const [foods, setFoods] = useState([])
 
     const setSlidesPerview = () => {
         setSlides(
@@ -54,14 +53,10 @@ export default function PopularRecipe() {
     React.useEffect(() => {
         setSlidesPerview();
         window.addEventListener("resize", setSlidesPerview);
-        fetch(`https://api.spoonacular.com/recipes/random?apiKey=3c374c59b2e74325892f07406d6c7793&number=7`)
-            .then(res => res.json()).then(data => setFoods(data.recipes))
-
         return () => {
             window.removeEventListener("resize", setSlidesPerview);
         };
     }, []);
-    console.log(foods)
 
     return (
         <Swiper
@@ -79,13 +74,6 @@ export default function PopularRecipe() {
                     </SwiperSlide>
                 ))
             }
-            {/* {
-                foods.length > 0 && foods.map((food: any) => (
-                    <SwiperSlide key={food.title} className='flex items-center justify-center py-3'>
-                        <FoodCard img={food.image} name={food.title} cook={food.readyInMinutes} id={food.id} />
-                    </SwiperSlide>
-                ))
-            } */}
 
         </Swiper>
     )
