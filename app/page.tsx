@@ -112,7 +112,7 @@ export default function Home() {
           </div>
         </div>
         {/* bg-[url('/images/hero-bg.jpg')] */}
-        <div className="lg:w-2/3 p-5 rounded-md relative bg-cover bg-white   ">
+        <div className="lg:w-2/3 p-5 rounded-md relative bg-cover bg-lime-400 ">
           <h1 className={`${montserrat.className} text-white tracking-tighter text-5xl`}>Popular Recipe</h1>
           <div className="flex py-10 justify-center">
             <PopularRecipe />

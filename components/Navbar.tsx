@@ -11,24 +11,24 @@ import { MenuIcon } from "lucide-react";
 import { SlClose } from "react-icons/sl";
 import Menu from "./Menu";
 import { bigShoulderText, montserrat, roboto } from "@/font/font";
-// const social = [
-//   {
-//     href: "/",
-//     img: "/icons/facebook.png",
-//   },
-//   {
-//     href: "/",
-//     img: "/icons/insta.png",
-//   },
-//   {
-//     href: "/",
-//     img: "/icons/tiktok.png",
-//   },
-// ]
+
+const links = [
+  {
+    path: '/',
+    name: 'Home'
+  }, {
+    path: '/cook',
+    name: 'Cook'
+  }, {
+    path: '/category',
+    name: 'Category'
+  }
+]
+
 export default function Navbar() {
   return (
     <nav
-      className=" flex gap-2 bg-white rounded-md "
+      className=" flex gap-2 justify-between items-center bg-white rounded-md "
     >
       <Link href={"/"} className="py-2 min-w-fit gap-3 px-3 border-black border-r-[3px] flex items-center ">
         <Image
@@ -40,7 +40,14 @@ export default function Navbar() {
         />
         <p className={`${roboto.className} sm:text-lg uppercase whitespace-nowrap lg:text-xl`}>recipe-box</p>
       </Link>
-      <div className=" w-full flex justify-end items-center mr-3 sm:mr-10">
+      <div className="hidden lg:flex pr-10 gap-10">
+        {links.map((link, index) => (
+          <Link href={link.path} key={index} className="hover:opacity-75 font-normal transition-all duration-100 ease-in-out">
+            {link.name}
+          </Link>
+        ))}
+      </div>
+      <div className="pr-5 lg:hidden">
         <Menu />
       </div>
     </nav>

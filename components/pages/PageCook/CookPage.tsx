@@ -97,10 +97,10 @@ return (
         `}
         >
             <div className="m-2 p-2 px-2 flex flex-col gap-3">
-                <div className="flex items-center pt-2 justify-between rounded-lg">
-                    <Link href={"/"} className="">
+                <div className="flex items-center lg:justify-center justify-between pt-2 rounded-lg">
+                    {/* <Link href={"/"} className="">
                         <Button bgColor="white">Home</Button>
-                    </Link>
+                    </Link> */}
                     <p className={`${bigShoulderText.className} uppercase text-5xl tracking-wide text-white`}>Ingredients</p>
                     <div className="lg:hidden">
                         <Menu />
@@ -130,7 +130,7 @@ return (
                                     <div className="text-black rounded-lg hover:bg-gray-100 py-2 w-full" key={i}>
                                         <button
                                             onClick={() => handleSelectedIngredients(ingredient, index)}
-                                            className={cn(`text-start w-full px-2 bg-transparent`,
+                                            className={cn(`text-start w-full px-2  bg-transparent`,
                                                 { 'text-green-500': category.selected.includes(ingredient) })}
                                         >
                                             {ingredient}
