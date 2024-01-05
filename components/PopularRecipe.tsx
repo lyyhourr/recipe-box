@@ -43,6 +43,7 @@ const PopularFoods = [{
 export default function PopularRecipe() {
 
     const [slides, setSlides] = useState(1)
+    const [foods, setFoods] = useState([])
 
     const setSlidesPerview = () => {
         setSlides(
@@ -53,10 +54,17 @@ export default function PopularRecipe() {
     React.useEffect(() => {
         setSlidesPerview();
         window.addEventListener("resize", setSlidesPerview);
+<<<<<<< Updated upstream
+=======
+        fetch(`https://api.spoonacular.com/recipes/random?apiKey=3c374c59b2e74325892f07406d6c7793&number=7`)
+            .then(res => res.json()).then(data => setFoods(data.recipes))
+
+>>>>>>> Stashed changes
         return () => {
             window.removeEventListener("resize", setSlidesPerview);
         };
     }, []);
+    console.log(foods)
 
     return (
         <Swiper
@@ -68,9 +76,15 @@ export default function PopularRecipe() {
             spaceBetween={'10px'}
             className="w-[80%]">
             {
+<<<<<<< Updated upstream
                 PopularFoods.map((food: any) => (
                     <SwiperSlide key={food.title} className='flex items-center justify-center py-3'>
                         <FoodCard img={food.img} name={food.name} cook={food.cook} id={food.id} />
+=======
+                foods.length > 0 && foods.map((food: any) => (
+                    <SwiperSlide key={food.title} className='flex items-center justify-center py-3'>
+                        <FoodCard img={food.image} name={food.title} cook={food.readyInMinutes} id={food.id} />
+>>>>>>> Stashed changes
                     </SwiperSlide>
                 ))
             }
