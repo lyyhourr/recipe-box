@@ -1,29 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import { MenuIcon } from "lucide-react";
-import { SlClose } from "react-icons/sl";
+
 import Menu from "./Menu";
 import { bigShoulderText, montserrat, roboto } from "@/font/font";
-
-const links = [
-  {
-    path: '/',
-    name: 'Home'
-  }, {
-    path: '/cook',
-    name: 'Cook'
-  }, {
-    path: '/category',
-    name: 'Category'
-  }
-]
+import { Links } from "@/constant/const";
 
 export default function Navbar() {
   return (
@@ -41,8 +22,25 @@ export default function Navbar() {
         <p className={`${roboto.className} sm:text-lg uppercase whitespace-nowrap lg:text-xl`}>recipe-box</p>
       </Link>
       <div className="hidden lg:flex pr-10 gap-10">
-        {links.map((link, index) => (
-          <Link href={link.path} key={index} className="hover:opacity-75 font-normal transition-all duration-100 ease-in-out">
+        {Links.map((link, index) => (
+          link.subCategory ?
+          <div className="relative py-2 group" key={index}>
+            <div className="flex gap-[5px] items-center">
+              <h1>{link.name}</h1>
+              <svg viewBox="0 0 8 6" height={6} width={8}>
+                <path d="M4 6L0.535898 0L7.4641 0L4 6Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <div className="absolute hidden group-hover:grid grid-cols-2 px-6 py-4 top-10 gap-4 w-[250px] border-[3px] z-10 bg-white gap-x-5 right-0 border-black">
+              {link.subCategory.map(sub=>(
+                <Link className="text-normal hover:underline underline-offset-8 decoration-[3px] whitespace-nowrap" key={sub} href={`/${link.name === 'Cuisines' ? 'cuisine' : 'mealtype'}/${sub}`}>
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          </div> 
+          :
+          <Link href={link.path} key={index} className="hover:opacity-75 py-2 font-normal transition-all duration-100 ease-in-out">
             {link.name}
           </Link>
         ))}

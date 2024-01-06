@@ -69,7 +69,7 @@ export default async function page({ params }: { params: { recipeId: any } }) {
                                             alt={item.name}
                                         />
                                         <p>{item.name}</p>
-                                        <p className='text-gray-500 text-sm'>Amount: {item.amount}{item.measures.metric.unitShort}</p>
+                                        <p className='text-gray-500 text-sm'>Amount: <span className='text-green-500'>{item.amount} {item.measures.metric.unitShort}</span></p>
                                     </div>
                                 ))
                             }
@@ -81,8 +81,11 @@ export default async function page({ params }: { params: { recipeId: any } }) {
                     <div className="w-full text-start md:pr-5">
                         <p className={`${inter.className} text-3xl text-center mb-5 uppercase underline`}>Instruction</p>
                         <div className='flex flex-col gap-6 '>
-                            {foods.analyzedInstructions.map((instruc: { steps: any[]; }) => instruc.steps.map((item: any, i: number) => (
-                                <p key={i}><span className='mr-2'> STEP{item.number} : </span> {item.step}</p>
+                            {!foods.analyzedInstructions.length ?
+                            <p className='text-center lg:text-xl'>Sorry we do not have the instruction for this recipe</p>
+                            :
+                            foods.analyzedInstructions.map((instruc: { steps: any[]; }) => instruc.steps.map((item: any, i: number) => (
+                                <p key={i}><span className='mr-2'> Step   {item.number} : </span> {item.step}</p>
                             )))
                             }
                         </div>

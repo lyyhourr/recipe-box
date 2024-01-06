@@ -4,6 +4,48 @@ export interface Ingredient {
   selected: string[];
   data: string[];
 }
+
+export const Links = [
+  {
+    path:'/',
+    name: 'Home'
+  },{
+    path:'/cook',
+    name: 'Cook'
+  },{
+    name: 'Cuisines',
+    subCategory: [
+      'American',
+      'British',
+      'Chinese',
+      'European',
+      'French',
+      'German',
+      'Indian',
+      'Italian',
+      'Japanese',
+      'Korean',
+      'Mexican',
+      'Spanish',
+      'Thai',
+      'Vietnamese'
+    ]
+  },{
+    name: 'Meal Types',
+    subCategory: [
+        'Main Course',
+        'Side Dish',
+        'Breakfast',
+        'Dessert',
+        'Bread',
+        'Salad',
+        'Soup',
+        'Snack',
+        'Drink'
+    ]
+  },
+]
+
 export const Ingredients: Ingredient[] = [
   {
     title: "Meats",
