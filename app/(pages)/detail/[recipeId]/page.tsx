@@ -11,7 +11,8 @@ type FoodTypes = {
 const FetchFood = async (id: any) => {
     try {
         const res = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=3c374c59b2e74325892f07406d6c7793`)
-        return res.json();
+        const food = await res.json()
+        return food;
     } catch (e) {
         console.log(e)
     }
@@ -19,7 +20,8 @@ const FetchFood = async (id: any) => {
 const FetchSimilarRecipe = async (id: any) => {
     try {
         const res = await fetch(`https://api.spoonacular.com/recipes/${id}/similar?apiKey=3c374c59b2e74325892f07406d6c7793`)
-        return res.json();
+        const similarRecipe = await res.json()
+        return similarRecipe;
     } catch (e) {
         console.log(e)
     }
@@ -46,11 +48,9 @@ export default async function page({ params }: { params: { recipeId: any } }) {
                         <p>Cooking Time : <span className='text-green-500'> {foods.readyInMinutes} minutes </span></p>
                         <p>Very Healthy : {foods.veryHealthy ? "✅" : "❌"} &nbsp; | &nbsp; Vegetarian : {foods.vegetarian  ? "✅" : "❌"} &nbsp; | &nbsp; Vegan : {foods.vegan ? "✅" : "❌"}</p>
                         <div className=''>
-
                             <p className='text-2xl mb-1'>Summary :</p>
                             <div className='text-base text-gray-600 lg:w-[90%] mr-auto overflow-y-scroll h-[170px] lg:h-[125px]' dangerouslySetInnerHTML={{ __html: foods.summary }}>
                             </div>
-
                         </div>
                     </div>
                 </div>
