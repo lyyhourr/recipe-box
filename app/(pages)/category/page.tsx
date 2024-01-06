@@ -52,8 +52,32 @@ export default async function page({ params }: { params: { catId: any } }) {
     return (
         <div className='m-3 '>
             <p className='text-center py-10 text-3xl'>title</p>
-            <div className='grid gap-1 sm:gap-2 lg:gap-3  grid-cols-2  md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5  w-full'>
-                {arr.map((item, i) => <div key={i} className='text-center border-black border2 '>card</div>)}
+            <div className='grid gap-1 sm:gap-2 lg:gap-3    md:grid-cols-2 lg:grid-cols-3   w-full'>
+                {arr.map((item, i) => <div
+                    className="flex h-[110px]  sm:h-[160px] md:h-[190px] lg:h-[150px] gap-3 overflow-hidden shadow-xl rounded-xl"
+                    key={i}
+                >
+                    <div className="w-4/5">
+                        <Image
+                            src={`/images/popular/bacon-wrapped-tacos.jpg`}
+                            width={10000}
+                            height={10000}
+                            alt=""
+                            className="h-full w-full"
+                        />
+                    </div>
+                    <div className="py-1 w-full flex flex-col justify-between ">
+                        <div className="flex h-[80px] flex-col">
+                            <p className="text-lg  overflow-scroll">title</p>
+                            <p className="text-gray-500 text-sm">ingred</p>
+                        </div>
+                        <div className="flex justify-end">
+                            <Link href={`/detail/${""}`} className=" transition-all duration-100 ease-in-out text-green-500 px-2 hover:translate-x-1">
+                                View Detail {`>`}
+                            </Link>
+                        </div>
+                    </div>
+                </div>)}
             </div>
         </div>
     )
