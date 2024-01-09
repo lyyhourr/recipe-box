@@ -32,10 +32,10 @@ export default async function page({ params }: { params: { recipeId: any } }) {
 
     return (
 
-        <div className=' p-2 bg-black flex flex-col gap-1'>
+        <div className='p-2 bg-black flex flex-col gap-1'>
             <Navbar />
-            <section className='bg-white rounded-lg'>
-                <div className='w-full gap-6 px-2 md:px-5 flex flex-col lg:flex-row lg:justify-center  bg-white rounded-lg border-b-2 pb-7 mb-5 py-5'>
+            <section className='bg-white px-2 rounded-lg'>
+                <div className='w-full gap-6 md:px-5 flex flex-col lg:flex-row lg:justify-center  bg-white rounded-lg border-b-2 pb-7 mb-5 py-5'>
                     <Image
                         src={foods.image}
                         width={10000}
@@ -54,7 +54,7 @@ export default async function page({ params }: { params: { recipeId: any } }) {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col lg:flex-row gap-1 py-8 w-[90%] mx-auto sm:w-[95%] lg:w-full'>
+                <div className='flex flex-col lg:flex-row gap-1 py-8 mx-auto md:w-[95%] lg:w-full'>
                     <div className='w-full'>
                         <p className={`${inter.className} uppercase text-center text-3xl mb-5`}>Ingredients</p>
                         <div className="w-full grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 py-5  gap-y-6">
@@ -78,7 +78,7 @@ export default async function page({ params }: { params: { recipeId: any } }) {
                         </div>
                     </div>
 
-                    <div className="w-full text-start md:pr-5">
+                    <div className="w-full md:pr-5">
                         <p className={`${inter.className} text-3xl text-center mb-5 uppercase underline`}>Instruction</p>
                         <div className='flex flex-col gap-6 '>
                             {!foods.analyzedInstructions.length ?
@@ -93,7 +93,7 @@ export default async function page({ params }: { params: { recipeId: any } }) {
                 </div>
 
             </section>
-            <section className=' bg-white gap-5 p-5 rounded-lg'>
+            <section className=' bg-white gap-5 px-2 py-5 md:p-5 rounded-lg'>
                 <YouMayLike similarRecipes={similarRecipes}/>
             </section>
             <Footer/>

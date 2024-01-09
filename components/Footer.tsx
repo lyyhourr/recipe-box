@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div className='w-full h-full bg-white py-10 rounded-lg mb-1'>
 
-      <section className=' lg:items-center lg:justify-evenly lg:mb-10 lg:flex-row flex-col flex gap-10 px-5  pb-3 ' >
+      <section className=' lg:items-center lg:justify-evenly lg:mb-10 lg:flex-row flex-col flex gap-10 px-2 md:px-5  pb-3 ' >
         <div className='flex flex-col lg:items-center lg:justify-center'>
           <Image
             src={'/logos/main-logo.png'}
@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
       </section >
-      <section className='flex flex-col sm:flex-row gap-5 sm:gap-[100px] p-5 sm:items-center sm:justify-center w-full'>
+      <section className='flex flex-col sm:flex-row gap-5 sm:gap-[100px] p-2 md:p-5 sm:items-center sm:justify-center w-full'>
         <p className={`${roboto.className} text-3xl`}>Donate Us</p>
         <div className='flex  '>
           <div className='flex flex-col sm:flex-row gap-6  '>
